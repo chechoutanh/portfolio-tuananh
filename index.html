@@ -263,6 +263,8 @@ nav a.active{color:var(--cyan);border-bottom-color:var(--cyan)}
 .bul{margin:0;padding-left:18px;color:var(--fg-soft);font-size:14.5px;display:grid;gap:6px}
 .bul li::marker{color:var(--cyan)}
 .bul b{color:var(--fg);font-weight:600}
+.major{margin:0;padding:10px 14px;border-left:2px solid var(--cyan);background:var(--cyan-dim);font-size:14.5px;color:var(--fg-soft)}
+.major b{display:block;margin-bottom:2px;font:500 11px/1.6 var(--mono);text-transform:uppercase;letter-spacing:.1em;color:var(--cyan)}
 .adv{font-size:13.5px;color:var(--fg-soft);margin:0}
 .adv b{color:var(--fg);font-weight:500}
 .edu-grid{display:grid;gap:16px}
@@ -1060,6 +1062,7 @@ td .sub-t{display:block;font-size:13px;color:var(--fg-soft)}
           <li>Reported its failure on heavier, faster held-out conditions (3.9 false alarms/min); released open source (MIT) with tests, a technical report and a demo.</li>
           <li>Grew out of my internship with industrial robot arms at HCMUT.</li>
         </ul>
+        <p class="major"><b>Mechanical Engineering · Applied Math</b>Modeled the arm from its equations of motion, so worn joints show up as extra friction torque; then treated detection as a statistics problem, trading missed faults against false alarms per minute.</p>
         <div class="tools"><span>PyBullet</span><span>Python</span><span>scikit-learn</span><span>Robot dynamics</span></div>
       </div>
       <div class="scores">
@@ -1104,6 +1107,7 @@ td .sub-t{display:block;font-size:13px;color:var(--fg-soft)}
           <li>Reached <b>20x magnification</b> with available components and a mount borrowed from another club.</li>
           <li>Main instrument at PAsC events, letting <b>300+ attendees</b> safely view the Sun through a solar filter.</li>
         </ul>
+        <p class="major"><b>Mechanical Engineering · Applied Math</b>Turned optics math (focal length, focal ratio, magnification) into physical dimensions, then designed and fabricated the tube assembly to hold the lenses at those lengths.</p>
         <div class="tools"><span>Optics</span><span>PVC fabrication</span><span>Solar filter</span></div>
       </div>
       <div class="scores">
@@ -1146,6 +1150,7 @@ td .sub-t{display:block;font-size:13px;color:var(--fg-soft)}
           <li>Led development in a 4-member team: a bilingual (VI/EN) web app and browser extension combining ML models with rule-based checks on text, images, videos and files.</li>
           <li>Used the tool with The Promethean Flame to teach <b>50+ rural students</b> to recognize scam signals.</li>
         </ul>
+        <p class="major"><b>Applied Math</b>At its core a classification problem: machine-learning models give probabilistic signals, and rule-based checks catch the clear-cut cases they can miss.</p>
         <div class="tools"><span>Machine learning</span><span>Web app</span><span>Browser extension</span></div>
       </div>
       <div class="scores">
@@ -1193,6 +1198,7 @@ td .sub-t{display:block;font-size:13px;color:var(--fg-soft)}
           <li>Multi-objective optimization: best consecutive-hour window search and Pareto-front analysis without fixed weights.</li>
           <li>Random Forest seeing predictor, openly trained on physics-based proxy labels; bilingual Streamlit app with pytest tests.</li>
         </ul>
+        <p class="major"><b>Applied Math</b>Framed "when should we observe?" as a multi-objective optimization: a Pareto front instead of one fixed weighting, stress-tested against 500 random weight sets.</p>
         <div class="tools"><span>Astropy</span><span>Streamlit</span><span>Optimization</span></div>
       </div>
       <div class="scores">
@@ -1235,6 +1241,7 @@ td .sub-t{display:block;font-size:13px;color:var(--fg-soft)}
           <li>Led the team computing sidereal time and equatorial–horizontal coordinate transformations, showing how the sky's motion depends on latitude.</li>
           <li>Validated every transformation automatically; documented the model's limits (J2000.0 epoch; no precession, nutation or refraction).</li>
         </ul>
+        <p class="major"><b>Applied Math</b>Spherical trigonometry and coordinate rotations turned into code, with every result checked numerically against a reference library to under 0.1°.</p>
         <div class="tools"><span>Spherical astronomy</span><span>3D web</span><span>Automated tests</span></div>
       </div>
       <div class="scores">
@@ -1256,11 +1263,11 @@ td .sub-t{display:block;font-size:13px;color:var(--fg-soft)}
 <footer><div class="wrap">
   <div class="tblock">
     <div><div class="label">Operator</div><div class="big">Nguyen Minh Tuan Anh</div><div class="val contact-mail">teslagaming250@gmail.com</div></div>
-    <div><div class="label">Intended major</div><div class="val">Mechanical Eng.</div></div>
+    <div><div class="label">Intended majors</div><div class="val">Mechanical Eng.<br>Applied Math</div></div>
     <div><div class="label">Based in</div><div class="val">Ho Chi Minh City</div></div>
     <div><div class="label">Class of</div><div class="val">2027</div></div>
   </div>
-  <div class="foot-note"><span>A robot-arm tinkerer, a telescope builder, and a STEM tutor.</span><span><a href="https://github.com/chechoutanh" target="_blank" rel="noopener" style="color:inherit">GitHub</a> · <a href="https://www.facebook.com/nmtangulyvcl/" target="_blank" rel="noopener" style="color:inherit">Facebook</a></span></div>
+  <div class="foot-note"><span>I like turning equations into things that move, focus and predict: robot arms, telescopes, observing plans.</span><span><a href="https://github.com/chechoutanh" target="_blank" rel="noopener" style="color:inherit">GitHub</a> · <a href="https://www.facebook.com/nmtangulyvcl/" target="_blank" rel="noopener" style="color:inherit">Facebook</a></span></div>
 </div></footer>
 
 <div class="peek" id="peek" aria-hidden="true"><img alt=""></div>
