@@ -1,0 +1,1366 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Tuan Anh Portfolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a dark HUD / terminal console — chamfered panels, steel-blue and silver signal lines, scanline grid ground */
+:root{
+  /* Navy: deep navy with steel blue and a cold silver */
+  --bg:#070d1c; --bg2:#0c1528; --panel:#101c34; --fg:#e8eef8; --fg-soft:#94a3bc;
+  --line:#1f3157; --cyan:#4f7dff; --pink:#c7d4ea; --c-rgb:79,125,255; --p-rgb:199,212,234; --bg-rgb:7,13,28; --on-accent:#050a18;
+  --cyan-dim:rgba(var(--c-rgb),.12); --pink-dim:rgba(var(--p-rgb),.12);
+  --display:"Chakra Petch","Arial Narrow",system-ui,sans-serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{background:var(--bg);color:var(--fg);font:400 16px/1.6 var(--body);
+  background-image:
+    radial-gradient(1200px 500px at 85% -10%,rgba(var(--p-rgb),.10),transparent 60%),
+    radial-gradient(900px 500px at -10% 20%,rgba(var(--c-rgb),.08),transparent 60%),
+    linear-gradient(rgba(var(--c-rgb),.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(var(--c-rgb),.035) 1px,transparent 1px);
+  background-size:auto,auto,32px 32px,32px 32px;background-attachment:fixed}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:20;
+  background:repeating-linear-gradient(0deg,rgba(255,255,255,.018) 0 1px,transparent 1px 3px)}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.05;text-wrap:balance;margin:0;letter-spacing:.01em}
+.ph{background:linear-gradient(90deg,var(--cyan),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+.label{font:500 12px/1.4 var(--mono);text-transform:uppercase;letter-spacing:.14em;color:var(--fg-soft)}
+.label::before{content:"// ";color:var(--cyan)}
+
+/* chamfered panel */
+.panel{position:relative;background:linear-gradient(180deg,rgba(255,255,255,.025),transparent),var(--panel);
+  border:1px solid var(--line);
+  clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,14px 100%,0 calc(100% - 14px))}
+.panel::after{content:"";position:absolute;top:0;right:0;width:20px;height:20px;
+  background:linear-gradient(225deg,var(--cyan) 0 50%,transparent 50%);opacity:.7}
+
+/* header */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:rgba(var(--bg-rgb),.82);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px}
+.logo{font:700 22px/1 var(--display);text-decoration:none;letter-spacing:.06em;text-transform:uppercase}
+.logo span{color:var(--pink);text-shadow:0 0 12px var(--pink)}
+nav ul{display:flex;gap:2px;list-style:none;margin:0;padding:0}
+nav a{display:block;text-decoration:none;font:500 13px/1 var(--mono);text-transform:uppercase;letter-spacing:.06em;padding:10px 12px;color:var(--fg-soft);border-bottom:2px solid transparent}
+nav a:hover{color:var(--cyan);border-bottom-color:var(--cyan);text-shadow:0 0 10px rgba(var(--c-rgb),.6)}
+.sub{position:relative}
+.sub>ul{display:none;position:absolute;top:100%;left:0;flex-direction:column;background:var(--bg2);border:1px solid var(--line);border-top:2px solid var(--pink);padding:6px;min-width:220px}
+.sub:hover>ul,.sub:focus-within>ul{display:flex}
+@media (max-width:860px){
+  .bar{flex-direction:column;align-items:flex-start;gap:6px}
+  nav{width:100%;overflow-x:auto}
+  nav ul{width:max-content}
+  .sub>ul{display:none!important}
+}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;padding-block:72px 56px}
+.hero .hey{font:500 13px/1 var(--mono);color:var(--cyan);letter-spacing:.16em;text-transform:uppercase}
+.hero .hey::before{content:"> ";color:var(--pink)}
+.hero h1{font-size:clamp(48px,8.5vw,100px);margin:16px 0 20px;text-transform:uppercase}
+.hero p.tag{font-size:19px;max-width:36ch;color:var(--fg-soft);margin:0 0 30px}
+.hero p.tag b{color:var(--fg);font-weight:600}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--cyan);color:var(--on-accent);text-decoration:none;font:600 14px/1 var(--mono);text-transform:uppercase;letter-spacing:.08em;padding:15px 24px;
+  clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px));transition:box-shadow .2s,background .2s}
+.btn:hover{background:var(--pink);color:#fff;box-shadow:0 0 24px var(--pink)}
+.social{display:flex;align-items:center;gap:10px;margin-top:30px;flex-wrap:wrap}
+.social a{width:42px;height:42px;display:grid;place-items:center;border:1px solid var(--line);text-decoration:none;font:600 12px/1 var(--mono);color:var(--fg-soft);transition:all .2s}
+.social a:hover{border-color:var(--cyan);color:var(--cyan);box-shadow:0 0 14px rgba(var(--c-rgb),.4)}
+.portrait{position:relative;aspect-ratio:4/5;max-width:100%;background:var(--panel);display:grid;place-items:center;border:1px solid var(--line);
+  box-shadow:0 0 0 1px rgba(var(--c-rgb),.15),0 0 60px -10px rgba(var(--p-rgb),.35)}
+.portrait::before,.portrait::after{content:"";position:absolute;width:28px;height:28px;border:2px solid var(--cyan)}
+.portrait::before{top:-6px;left:-6px;border-right:0;border-bottom:0}
+.portrait::after{bottom:-6px;right:-6px;border-left:0;border-top:0;border-color:var(--pink)}
+.portrait svg{width:56%;height:auto;color:var(--cyan);opacity:.55;animation:spin 24s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.portrait .cap{position:absolute;left:0;right:0;bottom:0;border-top:1px solid var(--line);display:flex;justify-content:space-between;padding:9px 12px;font:500 11px/1.3 var(--mono);text-transform:uppercase;letter-spacing:.12em;background:rgba(var(--bg-rgb),.75);color:var(--fg-soft)}
+.dim{position:absolute;font:500 11px var(--mono);color:var(--pink)}
+.dim.v{left:-40px;top:50%;transform:rotate(-90deg)}
+@media (max-width:860px){.hero{grid-template-columns:1fr;padding-block:44px}.portrait{max-width:340px}.dim.v{display:none}}
+
+/* sections */
+section{padding-block:56px}
+.head{display:flex;align-items:baseline;gap:14px;margin-bottom:28px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:12px}
+.head h2{font-size:clamp(32px,4.6vw,48px);text-transform:uppercase}
+.head .ref{font:500 12px var(--mono);color:var(--pink);letter-spacing:.08em}
+
+.edu{display:grid;grid-template-columns:120px 1fr;gap:24px;padding:24px;align-items:center}
+.crest{aspect-ratio:1;border:1px dashed var(--cyan);display:grid;place-items:center;font:500 11px var(--mono);color:var(--cyan);text-align:center;background:var(--cyan-dim)}
+.edu h3{font-size:28px;margin-bottom:10px}
+.edu dl{display:grid;grid-template-columns:max-content 1fr;gap:4px 16px;margin:0;font-size:15px}
+.edu dt{font:500 12px/1.9 var(--mono);text-transform:uppercase;letter-spacing:.08em;color:var(--cyan)}
+.edu dd{margin:0;min-width:0;overflow-wrap:anywhere;color:var(--fg-soft)}
+@media (max-width:560px){.edu{grid-template-columns:1fr}.crest{width:96px}}
+
+.gpa{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.gpa .panel{padding:22px}
+.num{font:700 62px/1 var(--display);font-variant-numeric:tabular-nums;margin-top:8px}
+.num small{font-size:22px;color:var(--fg-soft);font-weight:500}
+.gpa .panel.top{border-color:var(--pink);box-shadow:inset 0 0 40px -10px rgba(var(--p-rgb),.45)}
+.gpa .panel.top .num{color:var(--pink);text-shadow:0 0 18px rgba(var(--p-rgb),.6)}
+.gpa .panel.top::after{background:linear-gradient(225deg,var(--pink) 0 50%,transparent 50%)}
+.scores{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:16px;margin-top:16px}
+.scores .panel{padding:18px 20px}
+.scores .num{font-size:46px;color:var(--cyan);text-shadow:0 0 16px rgba(var(--c-rgb),.45)}
+.scores p{margin:6px 0 0;font-size:13px;color:var(--fg-soft)}
+@media (max-width:560px){.gpa{grid-template-columns:1fr}}
+
+/* explore */
+.explore{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.card{display:grid;grid-template-columns:140px 1fr;gap:20px;padding:18px;text-decoration:none;align-items:center;transition:border-color .2s,transform .2s,box-shadow .2s}
+.card:hover{border-color:var(--cyan);transform:translateY(-3px);box-shadow:0 0 30px -8px rgba(var(--c-rgb),.5)}
+.thumb{aspect-ratio:1;border:1px solid var(--line);background:
+  repeating-linear-gradient(45deg,transparent 0 10px,rgba(var(--c-rgb),.06) 10px 11px),var(--bg2);display:grid;place-items:center;font:500 11px var(--mono);color:var(--fg-soft);letter-spacing:.1em}
+.card h3{font-size:26px;margin-bottom:6px;display:flex;justify-content:space-between;gap:8px;text-transform:uppercase}
+.card h3 .arr{color:var(--pink);font-family:var(--body);font-size:20px;transition:transform .2s}
+.card:hover h3 .arr{transform:translate(3px,-3px)}
+.card p{margin:0;font-size:14.5px;color:var(--fg-soft)}
+@media (max-width:860px){.explore{grid-template-columns:1fr}}
+@media (max-width:460px){.card{grid-template-columns:1fr}.thumb{aspect-ratio:16/9}}
+
+/* table */
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:15px;min-width:560px}
+th,td{text-align:left;padding:13px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+tbody tr:hover{background:var(--cyan-dim)}
+th{font:500 12px var(--mono);text-transform:uppercase;letter-spacing:.12em;color:var(--cyan)}
+td.rank{font:700 22px/1 var(--display);color:var(--pink);white-space:nowrap}
+.lvl{font:500 11px var(--mono);text-transform:uppercase;letter-spacing:.08em;border:1px solid var(--cyan);color:var(--cyan);padding:3px 8px;white-space:nowrap}
+
+.orgs{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.org{padding:22px;display:flex;flex-direction:column;gap:10px}
+.org .role{font:500 12px var(--mono);color:var(--pink);letter-spacing:.06em}
+.org h3{font-size:26px;text-transform:uppercase}
+.org p{color:var(--fg-soft)}
+.org ul{margin:0;padding-left:18px;color:var(--fg-soft);font-size:15px}
+.org li::marker{color:var(--cyan)}
+.stats{display:flex;gap:22px;flex-wrap:wrap;border-top:1px dashed var(--line);padding-top:12px;margin-top:auto}
+.stats b{font:700 26px/1 var(--display);display:block;color:var(--cyan)}
+.stats span{font:500 11px var(--mono);text-transform:uppercase;letter-spacing:.08em;color:var(--fg-soft)}
+.stats b span{font:inherit;letter-spacing:0;color:inherit}
+
+.proj{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.proj .panel{display:flex;flex-direction:column;transition:box-shadow .2s,border-color .2s}
+.proj .panel:hover{border-color:var(--pink);box-shadow:0 0 30px -10px rgba(var(--p-rgb),.5)}
+.proj .thumb{aspect-ratio:16/10;border:0;border-bottom:1px solid var(--line)}
+.proj .body{padding:20px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.proj h3{font-size:24px;text-transform:uppercase}
+.steps{display:grid;gap:6px;font-size:14.5px;margin:0}
+.steps div{display:grid;grid-template-columns:78px 1fr;gap:10px}
+.steps dt{font:500 11px/1.9 var(--mono);text-transform:uppercase;letter-spacing:.08em;color:var(--cyan)}
+.steps dd{margin:0;min-width:0;color:var(--fg-soft)}
+.tools{display:flex;flex-wrap:wrap;gap:6px}
+.tools span{font:500 12px var(--mono);background:var(--pink-dim);color:var(--pink);border:1px solid rgba(var(--p-rgb),.35);padding:3px 8px}
+
+.timeline{display:grid;border-left:2px solid var(--line);margin-left:6px}
+.tl{position:relative;padding:0 0 30px 28px}
+.tl::before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;background:var(--cyan);box-shadow:0 0 12px var(--cyan);transform:rotate(45deg)}
+.tl .when{font:500 13px var(--mono);color:var(--pink)}
+.tl h3{font-size:24px;margin:4px 0;text-transform:uppercase}
+.tl p{margin:0;color:var(--fg-soft);max-width:65ch}
+
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.gallery .thumb{aspect-ratio:1}
+@media (max-width:640px){.gallery{grid-template-columns:repeat(2,1fr)}}
+.hobby{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+.hobby p{margin:0 0 12px;max-width:60ch;color:var(--fg-soft)}
+#hobby p{color:var(--fg-soft)}
+@media (max-width:860px){.hobby{grid-template-columns:1fr}}
+
+/* footer: status console */
+footer{padding-block:48px 32px;border-top:1px solid var(--line);margin-top:24px}
+.tblock{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;border:1px solid var(--line);background:var(--panel)}
+.tblock>div{padding:14px 16px;border-right:1px solid var(--line);min-width:0}
+.tblock>div:last-child{border-right:0}
+.tblock .big{font:700 24px/1.1 var(--display);text-transform:uppercase}
+.tblock .val{font:500 14px var(--mono);margin-top:4px;overflow-wrap:anywhere;color:var(--cyan)}
+@media (max-width:700px){.tblock{grid-template-columns:1fr 1fr}.tblock>div:first-child{grid-column:1/-1;border-right:0;border-bottom:1px solid var(--line)}.tblock>div:nth-child(3){border-right:0}}
+.foot-note{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:16px;font:400 13px var(--mono);color:var(--fg-soft)}
+
+/* ---------- multi-page views ---------- */
+.view{display:none}
+.view.on{display:block}
+nav a.active{color:var(--cyan);border-bottom-color:var(--cyan)}
+.page-hero{padding-block:64px 24px;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.page-hero h1{font-size:clamp(40px,6.5vw,76px);text-transform:uppercase}
+.page-hero h1 em{font-style:normal;display:block;color:var(--fg)}
+.page-hero h1 .ph{display:inline}
+.page-hero p{color:var(--fg-soft);max-width:52ch;font-size:17px;margin:18px 0 0}
+.collage{position:relative;height:320px}
+.collage .thumb{position:absolute;border:1px solid var(--line);box-shadow:0 18px 40px rgba(0,0,0,.5)}
+.collage .a{width:46%;aspect-ratio:4/5;left:6%;top:0;transform:rotate(-6deg)}
+.collage .b{width:44%;aspect-ratio:4/3;right:0;top:18%;transform:rotate(5deg);border-color:var(--pink)}
+.collage .c{width:40%;aspect-ratio:1;left:30%;bottom:-6%;transform:rotate(-2deg);border-color:var(--cyan)}
+.ring{position:absolute;right:-20px;bottom:-40px;width:180px;height:180px;border:2px dashed rgba(var(--c-rgb),.35);border-radius:50%}
+@media (max-width:860px){.page-hero{grid-template-columns:1fr;padding-block:40px 8px}.collage{height:260px}}
+
+.certs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px}
+.certs .thumb{aspect-ratio:4/3;transition:transform .3s,box-shadow .3s,border-color .3s}
+.certs .thumb:hover{transform:scale(1.04) rotate(-1deg);border-color:var(--cyan);box-shadow:0 0 30px -6px rgba(var(--c-rgb),.6)}
+@media (max-width:640px){.certs{grid-template-columns:repeat(2,1fr)}}
+
+/* ---------- motion ---------- */
+@keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+@keyframes slideL{from{opacity:0;transform:translateX(-40px)}to{opacity:1;transform:none}}
+@keyframes slideR{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:none}}
+@keyframes zoom{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:none}}
+@keyframes floaty{0%,100%{translate:0 0}50%{translate:0 -12px}}
+@keyframes blink{50%{opacity:0}}
+@keyframes glitch{0%,92%,100%{transform:none;clip-path:none}93%{transform:translate(-3px,1px);clip-path:inset(10% 0 55% 0)}95%{transform:translate(3px,-1px);clip-path:inset(60% 0 8% 0)}97%{transform:translate(-1px,0);clip-path:inset(30% 0 40% 0)}}
+@keyframes sweep{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(var(--p-rgb),.6)}70%{box-shadow:0 0 0 14px rgba(var(--p-rgb),0)}}
+
+.view.on .rv{animation:rise .7s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i,0) * 90ms)}
+.view.on .rv-l{animation:slideL .8s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i,0) * 90ms)}
+.view.on .rv-r{animation:slideR .8s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i,0) * 90ms)}
+.view.on .rv-z{animation:zoom .8s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i,0) * 90ms)}
+.float{animation:floaty 5s ease-in-out infinite}
+.float.d2{animation-delay:-1.6s}.float.d3{animation-delay:-3.2s}
+.ring{animation:spin 30s linear infinite}
+.caret::after{content:"▮";color:var(--cyan);margin-left:4px;animation:blink 1s steps(1) infinite}
+.glitch{position:relative;display:inline-block;animation:glitch 4s infinite}
+.card h3 .arr{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;border:1px solid var(--pink);animation:pulse 2.4s infinite;flex:none}
+
+.wipe{position:fixed;inset:0;z-index:30;pointer-events:none;display:none;overflow:hidden}
+.wipe.go{display:block}
+.wipe::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(var(--c-rgb),.25) 40%,rgba(var(--p-rgb),.35) 60%,transparent);animation:sweep .55s ease-in-out forwards}
+
+@media (prefers-reduced-motion:reduce){
+  .view.on .rv,.view.on .rv-l,.view.on .rv-r,.view.on .rv-z,.float,.ring,.glitch,.card h3 .arr,.portrait svg{animation:none!important}
+  .wipe{display:none!important}
+}
+
+
+/* ---------- real-content additions ---------- */
+.links{display:flex;gap:8px;flex-wrap:wrap}
+.links a{font:500 11.5px/1 var(--mono);text-transform:uppercase;letter-spacing:.08em;text-decoration:none;color:var(--cyan);border:1px solid rgba(var(--c-rgb),.45);padding:7px 10px;transition:background .15s,color .15s}
+.links a:hover{background:var(--cyan);color:var(--on-accent)}
+.bul{margin:0;padding-left:18px;color:var(--fg-soft);font-size:14.5px;display:grid;gap:6px}
+.bul li::marker{color:var(--cyan)}
+.bul b{color:var(--fg);font-weight:600}
+.adv{font-size:13.5px;color:var(--fg-soft);margin:0}
+.adv b{color:var(--fg);font-weight:500}
+.edu-grid{display:grid;gap:16px}
+.metric{display:grid;place-items:center;text-align:center;gap:4px;padding:16px}
+.metric b{font:700 clamp(34px,5vw,46px)/1 var(--display);color:var(--cyan);text-shadow:0 0 18px rgba(var(--c-rgb),.45)}
+.metric span{font:500 11px var(--mono);text-transform:uppercase;letter-spacing:.1em;color:var(--fg-soft);max-width:26ch}
+.metric small{font:400 10px var(--mono);color:var(--fg-soft);opacity:.7;letter-spacing:.08em}
+.proj{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+.proj .thumb{aspect-ratio:auto;min-height:150px}
+.proj .role{font:500 12px var(--mono);color:var(--pink);letter-spacing:.06em}
+.course{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.course a{display:flex;flex-direction:column;gap:2px;padding:12px 16px;text-decoration:none;border:1px solid var(--line);background:var(--panel);min-width:0;flex:1 1 260px;transition:border-color .2s}
+.course a:hover{border-color:var(--cyan)}
+.course a b{font-weight:600;font-size:14.5px}
+.course a span{font:400 12px var(--mono);color:var(--fg-soft)}
+td a{color:var(--cyan);text-decoration:none;font:500 12px var(--mono);text-transform:uppercase;letter-spacing:.06em;white-space:nowrap}
+td a:hover{text-decoration:underline}
+td .sub-t{display:block;font-size:13px;color:var(--fg-soft)}
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.skills .panel{padding:20px;display:flex;flex-direction:column;gap:12px}
+.skills h3{font-size:20px;text-transform:uppercase}
+.vol{display:grid;gap:12px}
+.vol .panel{padding:16px 20px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center}
+.vol h3{font-size:19px;text-transform:uppercase}
+.vol .when{font:500 12px var(--mono);color:var(--pink)}
+.feature{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:start}
+.feature .panel{padding:24px;display:flex;flex-direction:column;gap:14px}
+@media (max-width:860px){.feature{grid-template-columns:1fr}}
+.contact-mail{font:500 14px var(--mono);color:var(--cyan);user-select:all}
+.crest.logo{border:0;background:#fff;border-radius:50%;padding:0;overflow:hidden;box-shadow:0 0 0 2px rgba(var(--c-rgb),.5),0 0 24px -4px rgba(var(--c-rgb),.55)}
+.crest.logo img{width:100%;height:100%;object-fit:cover;display:block;border-radius:50%;transform:scale(1.06)}
+:where(.thumb.photo){position:relative}
+.thumb.photo{overflow:hidden}
+.thumb.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
+.thumb.photo{cursor:zoom-in}
+.thumb.photo:hover img{transform:scale(1.06)}
+
+/* activity photo strips */
+.shots{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.shots>.thumb:first-child:nth-last-child(3){grid-column:1/-1;aspect-ratio:16/9}
+.tl .shots,.vol .shots{grid-template-columns:repeat(var(--n,4),1fr)}
+.tl .shots>.thumb:first-child,.vol .shots>.thumb:first-child{grid-column:auto;aspect-ratio:4/3}
+.shots .thumb{aspect-ratio:4/3;min-height:0;border:1px solid var(--line);font-size:10px;text-align:center;padding:4px;transition:border-color .2s,box-shadow .2s}
+.shots .thumb.photo{padding:0}
+.shots .thumb.photo:hover{border-color:var(--cyan);box-shadow:0 0 18px -4px rgba(var(--c-rgb),.6)}
+.org .shots{margin-top:4px}
+.tl .shots{margin-top:14px;max-width:640px}
+.vol .shots{flex-basis:100%}
+
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:40;display:none;place-items:center;padding:64px 16px;background:rgba(var(--bg-rgb),.92);backdrop-filter:blur(6px)}
+.lb.on{display:grid}
+.lb figure{margin:0;display:grid;gap:12px;justify-items:center;max-width:min(1100px,100%)}
+.lb img{max-width:100%;max-height:78vh;width:auto;border:1px solid var(--line);box-shadow:0 0 40px -10px rgba(var(--c-rgb),.6)}
+.lb figcaption{font:500 12px/1.5 var(--mono);color:var(--fg-soft);letter-spacing:.08em;text-transform:uppercase;text-align:center}
+.lb button{position:absolute;width:44px;height:44px;display:grid;place-items:center;background:var(--panel);border:1px solid var(--line);color:var(--fg);font:500 18px/1 var(--mono);cursor:pointer;transition:border-color .2s,color .2s}
+.lb button:hover{border-color:var(--cyan);color:var(--cyan)}
+.lb .x{top:16px;right:16px}
+.lb .prev{left:12px;top:calc(50% - 22px)}
+.lb .next{right:12px;top:calc(50% - 22px)}
+.lb.single .prev,.lb.single .next{display:none}
+
+/* activity detail pages */
+.back{display:inline-block;margin-bottom:14px;font:500 12px/1 var(--mono);text-transform:uppercase;letter-spacing:.1em;color:var(--cyan);text-decoration:none}
+.back:hover{text-shadow:0 0 10px rgba(var(--c-rgb),.6)}
+.page-hero .links{margin-top:22px}
+.detail{display:grid;grid-template-columns:1.15fr .85fr;gap:24px;align-items:start}
+.detail>.panel{padding:24px;display:flex;flex-direction:column;gap:14px}
+.detail>.panel h3{font-size:24px;text-transform:uppercase}
+.detail .scores{margin-top:0;grid-template-columns:repeat(2,1fr)}
+.detail .scores .num{font-size:38px}
+@media (max-width:860px){.detail{grid-template-columns:1fr}}
+.gallery.big{grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.gallery.big .thumb{aspect-ratio:4/3;transition:border-color .2s,box-shadow .2s}
+.gallery.big .thumb.photo:hover{border-color:var(--cyan);box-shadow:0 0 24px -6px rgba(var(--c-rgb),.6)}
+@media (max-width:640px){.gallery.big{grid-template-columns:1fr}}
+.pager{display:flex;justify-content:space-between;gap:16px;margin-top:40px;padding-top:20px;border-top:1px dashed var(--line)}
+.pager a{display:flex;flex-direction:column;gap:6px;text-decoration:none;max-width:48%}
+.pager a span{font:500 11px/1 var(--mono);text-transform:uppercase;letter-spacing:.1em;color:var(--fg-soft)}
+.pager a b{font:700 22px/1.1 var(--display);text-transform:uppercase;transition:color .2s}
+.pager a:hover b{color:var(--cyan)}
+.pager .next{margin-left:auto;text-align:right}
+.explore>.card:last-child:nth-child(odd){grid-column:1/-1}
+[data-go]{cursor:pointer}
+.org[data-go]{transition:border-color .2s,box-shadow .2s,transform .2s}
+.org[data-go]:hover{border-color:var(--cyan);box-shadow:0 0 30px -10px rgba(var(--c-rgb),.5);transform:translateY(-3px)}
+.links a.go{background:var(--cyan);color:var(--on-accent);border-color:var(--cyan)}
+.links a.go:hover{background:var(--pink);border-color:var(--pink)}
+
+/* hover preview: the whole photo, uncropped */
+.peek{position:fixed;z-index:35;pointer-events:none;padding:6px;background:var(--panel);border:1px solid var(--cyan);box-shadow:0 20px 50px rgba(0,0,0,.6),0 0 30px -6px rgba(var(--c-rgb),.6);opacity:0;transform:scale(.94);transition:opacity .18s,transform .18s}
+.peek.on{opacity:1;transform:none}
+.peek img{display:block;width:auto;height:auto;max-width:min(520px,46vw);max-height:70vh}
+@media (prefers-reduced-motion:reduce){.peek{transform:none}}
+</style>
+<div class="wipe" id="wipe" aria-hidden="true"></div>
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="#home">TuanAnh<span>.</span></a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="#home" data-nav="home">Home</a></li>
+        <li><a href="#achievements" data-nav="achievements">Achievements</a></li>
+        <li class="sub"><a href="#leadership" data-nav="leadership">Leadership ▾</a>
+          <ul>
+            <li><a href="#pasc">PAsC Astronomy Club</a></li>
+            <li><a href="#usac">USAC Astronomy Club</a></li>
+            <li><a href="#solar-pulse-hub">Solar Pulse Hub</a></li>
+            <li><a href="#mathmarvel">MathMarvel</a></li>
+            <li><a href="#promethean-flame">The Promethean Flame</a></li>
+          </ul>
+        </li>
+        <li class="sub"><a href="#projects" data-nav="projects">Projects ▾</a>
+          <ul>
+            <li><a href="#jointguard">JointGuard AI</a></li>
+            <li><a href="#telescope">D70F700 Refractor Telescope</a></li>
+            <li><a href="#scam-shield">Scam Shield</a></li>
+            <li><a href="#skyscore">SkyScore</a></li>
+            <li><a href="#astrosphere">AstroSphere</a></li>
+          </ul>
+        </li>
+        <li><a href="#internship" data-nav="internship">Internship</a></li>
+        <li><a href="#hobby" data-nav="hobby">Beyond the Lab</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+<!-- ===================== HOME ===================== -->
+<div class="view on" id="v-home">
+  <div class="wrap hero">
+    <div>
+      <div class="hey rv-l" style="--i:0">Hey there · Aspiring Mechanical Engineer</div>
+      <h1 class="rv-l" style="--i:1">I'm <span class="ph glitch">Tuan Anh</span></h1>
+      <p class="tag rv-l caret" style="--i:2">A <b>robot-arm tinkerer</b>, a <b>telescope builder</b>, and a <b>STEM tutor</b> from Ho Chi Minh City.</p>
+      <a class="btn rv" style="--i:3" href="#journey" data-scroll="journey">My Journey →</a>
+      <div class="social rv" style="--i:4" aria-label="Links">
+        <span class="label">Check out my</span>
+        <a href="https://github.com/chechoutanh" target="_blank" rel="noopener" aria-label="GitHub">gh</a>
+        <a href="https://www.facebook.com/nmtangulyvcl/" target="_blank" rel="noopener" aria-label="Facebook">fb</a>
+      </div>
+    </div>
+    <figure class="portrait rv-z float" style="margin:0;--i:2">
+      <span class="dim v">SYS.ID // NMTA-2027</span>
+      <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+        <circle cx="50" cy="50" r="16"/><circle cx="50" cy="50" r="5"/>
+        <path d="M50 18v-8M50 90v-8M18 50h-8M90 50h-8M27 27l-6-6M79 79l-6-6M27 73l-6 6M79 21l-6 6"/>
+        <circle cx="50" cy="50" r="30" stroke-dasharray="6 5"/>
+      </svg>
+      <figcaption class="cap"><span>Nguyen Minh Tuan Anh</span><span>Fig. 01</span></figcaption>
+    </figure>
+  </div>
+
+  <section><div class="wrap">
+    <div class="head rv"><h2>Education</h2><span class="ref">§ 01</span></div>
+    <div class="edu-grid">
+      <div class="panel edu rv" style="--i:1">
+        <div class="crest logo"><img src="data:image/webp;base64,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" alt="VNU-HCM High School for the Gifted logo" width="240" height="240"></div>
+        <div>
+          <h3>VNU-HCM High School for the Gifted | 2024 – 2027</h3>
+          <dl>
+            <dt>Major</dt><dd>Specialized in Physics</dd>
+            <dt>City</dt><dd>Ho Chi Minh City, Vietnam</dd>
+          </dl>
+        </div>
+      </div>
+      <div class="panel edu rv" style="--i:2">
+        <div class="crest logo"><img src="data:image/webp;base64,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" alt="Tran Dai Nghia High School for the Gifted logo" width="240" height="240"></div>
+        <div>
+          <h3>Tran Dai Nghia High School for the Gifted | 2020 – 2024</h3>
+          <dl>
+            <dt>Major</dt><dd>Specialized in Mathematics</dd>
+            <dt>City</dt><dd>Ho Chi Minh City, Vietnam</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div></section>
+
+  <section id="journey"><div class="wrap">
+    <div class="head"><h2>My Academic Journey</h2><span class="ref">§ 02 · GPA / 10</span></div>
+    <div class="gpa">
+      <div class="panel rv" style="--i:0"><div class="label">Grade 9</div><div class="num"><span data-count="9.4" data-dec="1">9.4</span><small>/10</small></div></div>
+      <div class="panel rv" style="--i:1"><div class="label">Grade 10</div><div class="num"><span data-count="9.4" data-dec="1">9.4</span><small>/10</small></div></div>
+      <div class="panel top rv" style="--i:2"><div class="label">Grade 11</div><div class="num"><span data-count="9.3" data-dec="1">9.3</span><small>/10</small></div></div>
+    </div>
+
+    <div class="head" style="margin-top:48px"><h2>Scores &amp; Certifications</h2><span class="ref">§ 03</span></div>
+    <div class="scores">
+      <div class="panel rv-z" style="--i:0"><div class="label">SAT</div><div class="num" data-count="1520" data-dec="0">1520</div><p>Math 790 · Verbal 730</p></div>
+      <div class="panel rv-z" style="--i:1"><div class="label">IELTS</div><div class="num" data-count="7.5" data-dec="1">7.5</div><p>Overall band</p></div>
+      <div class="panel rv-z" style="--i:2"><div class="label">AP Calculus BC</div><div class="num" data-count="5" data-dec="0">5</div><p>AB subscore: 5/5</p></div>
+      <div class="panel rv-z" style="--i:3"><div class="label">AP Physics C: Mech.</div><div class="num" data-count="4" data-dec="0">4</div><p>Out of 5</p></div>
+    </div>
+    <div class="course">
+      <a href="https://drive.google.com/file/d/1Jrw6N94LoESs9NlzOXSeYbeLjIE6bXIv/view?usp=drive_link" target="_blank" rel="noopener" class="rv" style="--i:4"><b>Machine Learning Specialization ↗</b><span>DeepLearning.AI &amp; Stanford Online · Coursera 2026</span></a>
+      <a href="https://drive.google.com/file/d/1e9gPBccvZ7M2s8H6hp0cQOgNZ8bi7K0s/view?usp=drive_link" target="_blank" rel="noopener" class="rv" style="--i:5"><b>Mathematics for Machine Learning ↗</b><span>Imperial College London · Coursera 2026</span></a>
+    </div>
+  </div></section>
+
+  <section><div class="wrap">
+    <div class="head"><h2>Explore</h2><span class="ref">§ 04 · Index</span></div>
+    <div class="explore">
+      <a class="panel card rv-l" style="--i:0" href="#achievements"><div class="thumb metric"><b>6</b><span>Medals &amp; awards</span></div><div><h3>Achievements <span class="arr">↗</span></h3><p>Gold at STEMCO Physics, 4th of 100 teams at RMIT Tech Camp 2026, and olympiad medals in mathematics.</p></div></a>
+      <a class="panel card rv-r" style="--i:1" href="#leadership"><div class="thumb metric"><b>5</b><span>Clubs &amp; initiatives</span></div><div><h3>Leadership <span class="arr">↗</span></h3><p>Two astronomy clubs, an e-waste and solar-energy initiative, a STEM outreach club, and The Promethean Flame, the tutoring project I founded.</p></div></a>
+      <a class="panel card rv-l" style="--i:2" href="#projects"><div class="thumb metric"><b>32/32</b><span>Faulty runs caught by JointGuard AI</span></div><div><h3>Projects <span class="arr">↗</span></h3><p>A robot-arm fault detector, a homemade refractor telescope, an anti-scam AI and two astronomy tools.</p></div></a>
+      <a class="panel card rv-r" style="--i:3" href="#internship"><div class="thumb metric"><b>3</b><span>Labs &amp; internships</span></div><div><h3>Internship <span class="arr">↗</span></h3><p>Industrial robot control at the HCMUT Control &amp; Automation Lab, data analysis and physics lab work.</p></div></a>
+      <a class="panel card rv-l" style="--i:4" href="#hobby"><div class="thumb metric"><b>♞</b><span>Chess · soccer · table tennis</span></div><div><h3>Beyond the Lab <span class="arr">↗</span></h3><p>Skills, volunteer work, and what I do when I'm not building things.</p></div></a>
+    </div>
+  </div></section>
+</div>
+
+<!-- ===================== ACHIEVEMENTS ===================== -->
+<div class="view" id="v-achievements">
+  <div class="wrap page-hero">
+    <div>
+      <div class="label rv-l">Honors &amp; Awards</div>
+      <h1 class="rv-l" style="--i:1"><span class="ph">Achievements</span><em>&amp; Recognition</em></h1>
+      <p class="rv-l" style="--i:2">Competitions in physics, mathematics and innovation, from international olympiads to a national tech camp where our team built an AI tool against online scams.</p>
+    </div>
+    <div class="collage">
+      <div class="thumb photo a float rv-z" style="--i:1"><img src="images/rmit-tech-camp.jpg" alt="RMIT Tech Camp 2026 4th place certificate" loading="lazy"></div>
+      <div class="thumb photo b float d2 rv-z" style="--i:2"><img src="images/stemco-gold.jpg" alt="STEMCO Physics gold certificate" loading="lazy"></div>
+      <div class="thumb photo c float d3 rv-z" style="--i:3"><img src="images/simso-gold.jpg" alt="SIMSO 2025 gold award certificate" loading="lazy"></div>
+      <div class="ring"></div>
+    </div>
+  </div>
+  <section><div class="wrap">
+    <div class="head rv"><h2>Awards</h2><span class="ref">§ 05</span></div>
+    <div class="panel table-wrap rv" style="--i:1">
+      <table>
+        <thead><tr><th>Award</th><th>Competition</th><th>Level</th><th>Year</th><th>Proof</th></tr></thead>
+        <tbody>
+          <tr><td class="rank">4th</td><td>RMIT Tech Camp 2026 Grand Finals, Innovation (Scam Shield)<span class="sub-t">Top 4 of 100 teams nationwide</span></td><td><span class="lvl">National</span></td><td>2026</td><td><a href="https://drive.google.com/drive/u/0/folders/1UlcaKxA5tdPe7pxiMfYQbW6Bg0qIKPwu" target="_blank" rel="noopener">View ↗</a></td></tr>
+          <tr><td class="rank">Gold</td><td>International Math and Science Competitions (STEMCO), Physics<span class="sub-t">Top 5% of 10,000+</span></td><td><span class="lvl">International</span></td><td>2025</td><td><a href="https://drive.google.com/file/d/1ceew8FQFZPuu8wmvNGMGUZho5zsu3NPp/view?usp=sharing" target="_blank" rel="noopener">View ↗</a></td></tr>
+          <tr><td class="rank">Silver</td><td>Siam International Math and Science Olympics (SIMSO), Mathematics</td><td><span class="lvl">International</span></td><td>2025</td><td><a href="https://drive.google.com/file/d/1hiGDcspkXNYneYlyu7kakIpWTwt4jkAR/view?usp=sharing" target="_blank" rel="noopener">View ↗</a></td></tr>
+          <tr><td class="rank">Gold</td><td>Siam International Math and Science Olympics (SIMSO), Mathematics</td><td><span class="lvl">National</span></td><td>2025</td><td><a href="https://drive.google.com/file/d/1UObp_HCZV6rmjDq-yN9QuUdDlmETt2db/view?usp=sharing" target="_blank" rel="noopener">View ↗</a></td></tr>
+          <tr><td class="rank">Silver</td><td>Asian Science and Mathematics Olympiad (ASMO), Mathematics<span class="sub-t">Top 12% nationally</span></td><td><span class="lvl">National</span></td><td>2025</td><td><a href="https://drive.google.com/file/d/1irhiBta3YT_qPubarQJfOOa5KaNS-sUz/view?usp=drive_link" target="_blank" rel="noopener">View ↗</a></td></tr>
+          <tr><td class="rank">Silver</td><td>Einstein Olympiad (ESO), Mathematics<span class="sub-t">Top 15% nationally</span></td><td><span class="lvl">National</span></td><td>2026</td><td><a href="https://drive.google.com/file/d/1aZqDuGnVpVSIynVD1KT-NplCnek86AXy/view?usp=drive_link" target="_blank" rel="noopener">View ↗</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="head" style="margin-top:48px"><h2>Certificates</h2><span class="ref">§ 06 · click to enlarge</span></div>
+    <div class="certs">
+      <div class="thumb photo rv-z" style="--i:0"><img src="images/rmit-tech-camp.jpg" alt="RMIT Tech Camp 2026 4th place certificate" loading="lazy"></div>
+      <div class="thumb photo rv-z" style="--i:1"><img src="images/stemco-gold.jpg" alt="STEMCO Physics gold certificate" loading="lazy"></div>
+      <div class="thumb photo rv-z" style="--i:2"><img src="images/simso-silver.jpg" alt="SIMSO 2025 international round silver award certificate" loading="lazy"></div>
+      <div class="thumb photo rv-z" style="--i:3"><img src="images/simso-gold.jpg" alt="SIMSO 2025 national round gold award certificate" loading="lazy"></div>
+      <div class="thumb photo rv-z" style="--i:4"><img src="images/asmo-silver.jpg" alt="ASMO 2025 mathematics silver award certificate" loading="lazy"></div>
+      <div class="thumb photo rv-z" style="--i:5"><img src="images/eso-silver.jpg" alt="Einstein Olympiad silver medal and certificate" loading="lazy"></div>
+    </div>
+  </div></section>
+</div>
+
+<!-- ===================== LEADERSHIP ===================== -->
+<div class="view" id="v-leadership">
+  <div class="wrap page-hero">
+    <div>
+      <div class="label rv-l">Clubs &amp; Initiatives</div>
+      <h1 class="rv-l" style="--i:1"><span class="ph">Leadership</span><em>&amp; Community</em></h1>
+      <p class="rv-l" style="--i:2">Most of my leadership happens under the night sky: running two astronomy clubs, bringing telescopes to public events, and turning STEM into something students in rural areas can touch.</p>
+    </div>
+    <div class="collage">
+      <div class="thumb photo a float rv-z" style="--i:1"><img src="images/pasc-helios.jpg" alt="PAsC HELIOS workshop talk on the Solar System" loading="lazy"></div>
+      <div class="thumb b float d2 rv-z" style="--i:2">SOLAR OBSERVING</div>
+      <div class="thumb photo c float d3 rv-z" style="--i:3"><img src="images/senstem-fair.jpg" alt="SENSTEM science fair game in Dong Thap" loading="lazy"></div>
+      <div class="ring"></div>
+    </div>
+  </div>
+  <section><div class="wrap">
+    <div class="orgs">
+      <article class="panel org rv" style="--i:0" data-go="pasc">
+        <div class="role">Vice President · Sep 2025 – Present</div>
+        <h3>PAsC Astronomy Club</h3>
+        <p class="adv">VNU-HCM High School for the Gifted</p>
+        <ul>
+          <li>Managed a 40-member club; led a 15-student team writing astronomy research articles and organized the HELIOS workshop for 40+ high schoolers.</li>
+          <li>Co-directed "The SENSUS" STEM event with USAC and Tran Dai Nghia's Physics Club for 100+ attendees, judged by Dr. Tran Hai Cat.</li>
+          <li>Ran an interactive astronomy workshop at Math Open Day (HCMC &amp; Da Lat) for 200+ attendees; raised 7,000,000 VND (~US$270) in sponsorships.</li>
+        </ul>
+        <div class="shots"><div class="thumb photo"><img src="images/pasc-1.jpg" alt="HELIOS workshop for high schoolers" loading="lazy"></div><div class="thumb photo"><img src="images/pasc-2.jpg" alt="Students working on a HELIOS activity" loading="lazy"></div><div class="thumb photo"><img src="images/pasc-3.jpg" alt="PAsC astronomy booth at Math Open Day HCMC" loading="lazy"></div><div class="thumb photo"><img src="images/pasc-4.jpg" alt="PAsC team at Math Open Day Da Lat" loading="lazy"></div></div>
+        <div class="stats"><div><b><span data-count="40" data-dec="0">40</span></b><span>Members</span></div><div><b><span data-count="200" data-dec="0">200</span>+</b><span>Workshop attendees</span></div></div>
+        <div class="links"><a class="go" href="#pasc">Open page →</a><a href="https://www.facebook.com/ptnkastronomyclub" target="_blank" rel="noopener">Fanpage ↗</a><a href="https://drive.google.com/drive/u/0/folders/1c2HT-epBzwCxnD8LMttI07JGfefEfmVu" target="_blank" rel="noopener">HELIOS ↗</a></div>
+      </article>
+      <article class="panel org rv" style="--i:1" data-go="usac">
+        <div class="role">Vice President → Project Lead · Jan 2025 – Present</div>
+        <h3>USAC Astronomy Club</h3>
+        <p class="adv">University of Science astronomy club, 24,000+ followers</p>
+        <ul>
+          <li>Coordinated talkshows, star- and Moon-observing nights and school exchanges.</li>
+          <li>Helped run booths at the 2025 Space Science Festival (solar observing for hundreds of visitors) and 2025 Student–Enterprise Day alongside 33 companies.</li>
+          <li>Now lead small product projects, including AstroSphere's orbital computation team.</li>
+        </ul>
+        <div class="shots" style="--n:3"><div class="thumb">PHOTO</div><div class="thumb">PHOTO</div><div class="thumb">PHOTO</div></div>
+        <div class="stats"><div><b><span data-count="24000" data-dec="0">24000</span>+</b><span>Followers</span></div><div><b><span data-count="33" data-dec="0">33</span></b><span>Partner companies</span></div></div>
+        <div class="links"><a class="go" href="#usac">Open page →</a><a href="https://www.facebook.com/clbusac" target="_blank" rel="noopener">Fanpage ↗</a></div>
+      </article>
+      <article class="panel org rv" style="--i:2" data-go="solar-pulse-hub">
+        <div class="role">Co-Founder · Apr 2026 – Present</div>
+        <h3>Solar Pulse Hub</h3>
+        <ul>
+          <li>Raised 15,000,000 VND (~US$570) by collecting e-waste for recycling.</li>
+          <li>Taught 6+ sessions on kinetic and solar energy to 40+ children at Tam Duc Shelter.</li>
+          <li>Donated 7 solar-powered lights and supplies worth 11,000,000 VND, plus 40 scholarships, to Tam Duc Shelter and Suoi Tuong Floating Village.</li>
+        </ul>
+        <div class="shots"><div class="thumb photo"><img src="images/solar-1.jpg" alt="Solar Pulse Hub fundraising station" loading="lazy"></div><div class="thumb photo"><img src="images/solar-2.jpg" alt="Handing over solar lights at Suoi Tuong" loading="lazy"></div><div class="thumb photo"><img src="images/solar-3.jpg" alt="Delivering donated supplies" loading="lazy"></div><div class="thumb photo"><img src="images/solar-4.jpg" alt="Teaching children at Tam Duc Shelter" loading="lazy"></div></div>
+        <div class="stats"><div><b><span data-count="7" data-dec="0">7</span></b><span>Solar lights donated</span></div><div><b><span data-count="40" data-dec="0">40</span></b><span>Scholarships</span></div></div>
+        <div class="links"><a class="go" href="#solar-pulse-hub">Open page →</a><a href="https://solarpulsehub.lovable.app/" target="_blank" rel="noopener">Website ↗</a></div>
+      </article>
+      <article class="panel org rv" style="--i:3" data-go="mathmarvel">
+        <div class="role">President · Jan 2025 – Present</div>
+        <h3>MathMarvel</h3>
+        <ul>
+          <li>Ran "SENSTEM," a STEM outreach campaign in Dong Thap with a hands-on science fair (water rockets, remote-controlled cars).</li>
+          <li>Organized English communication classes for 100 students.</li>
+          <li>Distributed 28,000,000 VND (~US$1,080) in aid, including 30 health insurance scholarships and 100+ school supply packages.</li>
+        </ul>
+        <div class="shots"><div class="thumb photo"><img src="images/mm-1.jpg" alt="Teaching a class in Dong Thap" loading="lazy"></div><div class="thumb photo"><img src="images/mm-2.jpg" alt="Hands-on science experiment with a student" loading="lazy"></div><div class="thumb photo"><img src="images/mm-3.jpg" alt="Science demo at the front of the class" loading="lazy"></div><div class="thumb photo"><img src="images/mm-4.jpg" alt="Remote-controlled car activity with children" loading="lazy"></div></div>
+        <div class="stats"><div><b><span data-count="100" data-dec="0">100</span></b><span>Students taught English</span></div><div><b><span data-count="28" data-dec="0">28</span>M</b><span>VND in aid</span></div></div>
+        <div class="links"><a class="go" href="#mathmarvel">Open page →</a><a href="https://www.facebook.com/MathMarvel.Club" target="_blank" rel="noopener">Fanpage ↗</a></div>
+      </article>
+      <article class="panel org rv" style="--i:4" data-go="promethean-flame">
+        <div class="role">Founder &amp; Head of Academic Department · Jun 2025 – Mar 2026</div>
+        <h3>The Promethean Flame</h3>
+        <p class="adv">Student-run STEM tutoring for underserved students; featured in Thanh Nien Newspaper</p>
+        <ul>
+          <li>Grew a 40+ member tutoring club and led a 10-member team teaching Math, Physics and Chemistry to 50+ students.</li>
+          <li>Ran a one-week teaching trip to Dong Thap with MathMarvel.</li>
+          <li>Collaborated with Ngôi Nhà Trí Tuệ to tutor 70+ students in storm- and flood-affected areas, helping 85% keep up with coursework.</li>
+        </ul>
+        <div class="shots"><div class="thumb photo"><img src="images/tutoring-class.jpg" alt="Promethean Flame tutoring class" loading="lazy"></div><div class="thumb photo"><img src="images/promethean-1.jpg" alt="&quot;The Promethean Flame is coming&quot; written on a chalkboard" loading="lazy"></div><div class="thumb photo"><img src="images/dong-thap-trip.jpg" alt="Group photo with students on the Dong Thap teaching trip" loading="lazy"></div><div class="thumb photo"><img src="images/thanh-nien-article.jpg" alt="Team at Thanh Nien Newspaper" loading="lazy"></div></div>
+        <div class="stats"><div><b><span data-count="120" data-dec="0">120</span>+</b><span>Students tutored</span></div><div><b><span data-count="40" data-dec="0">40</span>+</b><span>Members</span></div></div>
+        <div class="links"><a class="go" href="#promethean-flame">Open page →</a><a href="https://www.facebook.com/theprometheanflame.project" target="_blank" rel="noopener">Fanpage ↗</a><a href="https://thanhnien.vn/hoc-sinh-truong-chuyen-tphcm-truyen-lua-stem-den-tinh-xa-185251026085955751.htm" target="_blank" rel="noopener">Thanh Nien article ↗</a></div>
+      </article>
+    </div>
+  </div></section>
+</div>
+
+<!-- ===================== PROJECTS ===================== -->
+<div class="view" id="v-projects">
+  <div class="wrap page-hero">
+    <div>
+      <div class="label rv-l">Mechanical &amp; Robotics</div>
+      <h1 class="rv-l" style="--i:1"><span class="ph">Engineering</span><em>Projects</em></h1>
+      <p class="rv-l" style="--i:2">I like problems where a physical system has to be measured, modeled and tested: a robot arm whose joints wear out, a telescope tube cut to the right optical length, a night sky that has to be scored hour by hour.</p>
+    </div>
+    <div class="collage">
+      <div class="thumb photo a float rv-z" style="--i:1"><img src="images/jg-2.jpg" alt="JointGuard AI robot-arm simulator" loading="lazy"></div>
+      <div class="thumb photo b float d2 rv-z" style="--i:2"><img src="images/tel-2.jpg" alt="The D70F700 refractor set up for solar observing" loading="lazy"></div>
+      <div class="thumb photo c float d3 rv-z" style="--i:3"><img src="images/sky-1.jpg" alt="SkyScore observing planner" loading="lazy"></div>
+      <div class="ring"></div>
+    </div>
+  </div>
+  <section><div class="wrap">
+    <div class="proj">
+      <article class="panel rv" style="--i:0" data-go="jointguard">
+        <div class="thumb metric"><b>32/32</b><span>Faulty test runs caught</span><small>vs. 16/32 for baseline</small></div>
+        <div class="body">
+          <div class="role">Founder · Jan 2026 – Present</div>
+          <h3>JointGuard AI</h3>
+          <p class="adv">Can control signals alone reveal rising joint friction in robot arms? Advised by <b>Dr. Nguyen Vinh Hao</b> (HCMUT) and <b>Mr. Phung Van Hung</b>.</p>
+          <ul class="bul">
+            <li>Built a physics-based robot-arm simulator and fault-injection framework using only torque and tracking error.</li>
+            <li>Random Forest detector under a leakage-free protocol: <b>0.21 false alarms/min</b>; identified the faulty joint in <b>30/32</b> runs.</li>
+            <li>Reported its failure on heavier, faster held-out conditions (3.9 false alarms/min); released open source (MIT) with tests, a technical report and a demo.</li>
+          </ul>
+          <div class="tools"><span>PyBullet</span><span>Python</span><span>scikit-learn</span><span>Robot dynamics</span></div>
+          <div class="shots"><div class="thumb photo"><img src="images/jg-1.jpg" alt="JointGuard AI project page" loading="lazy"></div><div class="thumb photo"><img src="images/jg-2.jpg" alt="Simulated robot arm raising an anomaly alarm" loading="lazy"></div><div class="thumb photo"><img src="images/jg-3.jpg" alt="Two-joint arm model built from the equations of motion" loading="lazy"></div><div class="thumb photo"><img src="images/jg-4.jpg" alt="How a joint fault shows up inside the physics" loading="lazy"></div></div>
+          <div class="links"><a class="go" href="#jointguard">Open page →</a><a href="https://github.com/chechoutanh/JointGuard-AI" target="_blank" rel="noopener">GitHub ↗</a><a href="https://jointguardaii.vercel.app/" target="_blank" rel="noopener">Project page ↗</a></div>
+        </div>
+      </article>
+      <article class="panel rv" style="--i:1" data-go="telescope">
+        <div class="thumb metric"><b>70 mm · f/10</b><span>Homemade achromatic refractor</span><small>300+ people viewed the Sun through it</small></div>
+        <div class="body">
+          <div class="role">Leader · PAsC · Sep 2025 – Present</div>
+          <h3>D70F700 Refractor Telescope</h3>
+          <ul class="bul">
+            <li>Designed and built a 70 mm, f/10 achromatic refractor, calculating optical lengths to fabricate the PVC tube assembly and limit chromatic aberration.</li>
+            <li>Reached <b>20x magnification</b> with available components and a mount borrowed from another club.</li>
+            <li>Main instrument at PAsC events, letting <b>300+ attendees</b> safely view the Sun through a solar filter.</li>
+          </ul>
+          <div class="tools"><span>Optics</span><span>PVC fabrication</span><span>Solar filter</span></div>
+          <div class="shots"><div class="thumb photo"><img src="images/tel-1.jpg" alt="A visitor looking through the telescope" loading="lazy"></div><div class="thumb photo"><img src="images/tel-2.jpg" alt="The D70F700 refractor set up for solar observing" loading="lazy"></div><div class="thumb photo"><img src="images/tel-3.jpg" alt="Queue for solar viewing at Math Open Day Da Lat" loading="lazy"></div><div class="thumb photo"><img src="images/tel-4.jpg" alt="Construction diagram from the telescope build plan" loading="lazy"></div></div>
+          <div class="links"><a class="go" href="#telescope">Open page →</a><a href="https://drive.google.com/drive/u/0/folders/1OlRFkAxIN9be-bYSI30VybXsZ67RZp_O" target="_blank" rel="noopener">Product &amp; observations ↗</a></div>
+        </div>
+      </article>
+      <article class="panel rv" style="--i:2" data-go="scam-shield">
+        <div class="thumb metric"><b>4th / 100</b><span>Teams at RMIT Tech Camp 2026</span><small>100+ active users</small></div>
+        <div class="body">
+          <div class="role">Co-Founder &amp; Lead Developer · Oct 2025 – Present</div>
+          <h3>Scam Shield</h3>
+          <p class="adv">An AI-powered tool that helps people recognize online scams. Competition partners: Google, AWS.</p>
+          <ul class="bul">
+            <li>Led development in a 4-member team: a bilingual (VI/EN) web app and browser extension combining ML models with rule-based checks on text, images, videos and files.</li>
+            <li>Used the tool with The Promethean Flame to teach <b>50+ rural students</b> to recognize scam signals.</li>
+          </ul>
+          <div class="tools"><span>Machine learning</span><span>Web app</span><span>Browser extension</span></div>
+          <div class="shots"><div class="thumb photo"><img src="images/ss-1.jpg" alt="Scam Shield content checker" loading="lazy"></div><div class="thumb photo"><img src="images/ss-2.jpg" alt="Scam Shield warning-signs report" loading="lazy"></div><div class="thumb photo"><img src="images/ss-3.jpg" alt="Scam Shield guide to common scam types" loading="lazy"></div><div class="thumb photo"><img src="images/ss-4.jpg" alt="Scam Shield analysis history" loading="lazy"></div></div>
+          <div class="links"><a class="go" href="#scam-shield">Open page →</a><a href="https://github.com/chechoutanh/scam-call-shield" target="_blank" rel="noopener">GitHub ↗</a><a href="https://drive.google.com/drive/u/0/folders/1b_8OnO5-TToMKckTPdcab7PJxQBrHkd2" target="_blank" rel="noopener">Video demo ↗</a><a href="https://scammshield.vercel.app/#/home" target="_blank" rel="noopener">Website ↗</a></div>
+        </div>
+      </article>
+      <article class="panel rv" style="--i:3" data-go="skyscore">
+        <div class="thumb metric"><b>500</b><span>Random weight sets in robustness checks</span><small>Pareto-front trade-off analysis</small></div>
+        <div class="body">
+          <div class="role">Developer · Feb 2025 – Present</div>
+          <h3>SkyScore</h3>
+          <p class="adv">Open-source observing planner, advised by <b>Dr. Nguyen Ngoc Duy</b>. Used by USAC and PAsC to plan 2+ observing trips and the HELIOS workshop.</p>
+          <ul class="bul">
+            <li>Scores every hour on target altitude, moonlight, cloud cover and seeing, using Astropy and Open-Meteo forecasts.</li>
+            <li>Multi-objective optimization: best consecutive-hour window search and Pareto-front analysis without fixed weights.</li>
+            <li>Random Forest seeing predictor, openly trained on physics-based proxy labels; bilingual Streamlit app with pytest tests.</li>
+          </ul>
+          <div class="tools"><span>Astropy</span><span>Streamlit</span><span>Optimization</span></div>
+          <div class="shots"><div class="thumb photo"><img src="images/sky-1.jpg" alt="SkyScore app: best observing window and hourly score" loading="lazy"></div><div class="thumb photo"><img src="images/sky-2.jpg" alt="SkyScore criteria and predicted seeing charts" loading="lazy"></div><div class="thumb photo"><img src="images/sky-3.jpg" alt="SkyScore README: pipeline and mathematical model" loading="lazy"></div></div>
+          <div class="links"><a class="go" href="#skyscore">Open page →</a><a href="https://github.com/chechoutanh/Skycore" target="_blank" rel="noopener">GitHub ↗</a><a href="https://skycore.streamlit.app/" target="_blank" rel="noopener">Website ↗</a></div>
+        </div>
+      </article>
+      <article class="panel rv" style="--i:4" data-go="astrosphere">
+        <div class="thumb metric"><b>&lt; 0.1°</b><span>Coordinate error vs. astronomy-engine</span><small>IAU 1982 sidereal time</small></div>
+        <div class="body">
+          <div class="role">Orbital Computation Lead · USAC · Feb 2026 – Present</div>
+          <h3>AstroSphere</h3>
+          <p class="adv">A browser-based 3D celestial-sphere simulator for teaching basic astronomy.</p>
+          <ul class="bul">
+            <li>Led the team computing sidereal time and equatorial–horizontal coordinate transformations, showing how the sky's motion depends on latitude.</li>
+            <li>Validated every transformation automatically; documented the model's limits (J2000.0 epoch; no precession, nutation or refraction).</li>
+          </ul>
+          <div class="tools"><span>Spherical astronomy</span><span>3D web</span><span>Automated tests</span></div>
+          <div class="shots"><div class="thumb photo"><img src="images/astro-1.jpg" alt="AstroSphere celestial-sphere simulator" loading="lazy"></div><div class="thumb photo"><img src="images/astro-2.jpg" alt="The 3D celestial sphere with the horizon and celestial pole" loading="lazy"></div><div class="thumb photo"><img src="images/astro-3.jpg" alt="Latitude and sky-rotation controls" loading="lazy"></div></div>
+          <div class="links"><a class="go" href="#astrosphere">Open page →</a><a href="https://astrosphere.clbtvusac.com/" target="_blank" rel="noopener">Web app ↗</a></div>
+        </div>
+      </article>
+    </div>
+  </div></section>
+</div>
+
+<!-- ===================== INTERNSHIP ===================== -->
+<div class="view" id="v-internship">
+  <div class="wrap page-hero">
+    <div>
+      <div class="label rv-l">Hands-on Experience</div>
+      <h1 class="rv-l" style="--i:1"><span class="ph">Internship</span><em>&amp; Lab Work</em></h1>
+      <p class="rv-l" style="--i:2">Working with industrial robot arms at HCMUT is where JointGuard AI started. These are the labs and teams that taught me how engineering works outside the classroom.</p>
+    </div>
+    <div class="collage">
+      <div class="thumb photo a float rv-z" style="--i:1"><img src="images/hcmut-lab.jpg" alt="Working at the HCMUT Mechatronics Lab" loading="lazy"></div>
+      <div class="thumb photo b float d2 rv-z" style="--i:2"><img src="images/ros-robot.jpg" alt="Testing a ROS-based mobile robot on a line track" loading="lazy"></div>
+      <div class="thumb photo c float d3 rv-z" style="--i:3"><img src="images/physics-lab.jpg" alt="Physics lab session" loading="lazy"></div>
+      <div class="ring"></div>
+    </div>
+  </div>
+  <section><div class="wrap">
+    <div class="timeline">
+      <div class="tl rv" style="--i:0"><div class="when">May – Aug 2025</div><h3>Engineering Intern · HCMUT Control &amp; Automation Lab</h3>
+        <p>Ho Chi Minh City University of Technology; advised by Dr. Nguyen Vinh Hao.</p>
+        <ul class="bul" style="margin-top:10px">
+          <li>Built a C++/Python GUI for industrial robot control, improving real-time joint telemetry streaming and UI latency.</li>
+          <li>Modeled control loops and robot dynamics in MATLAB/Simulink; programmed ROS-based mobile robots (Arduino, sensor fusion) and tested obstacle avoidance and motor response on hardware.</li>
+          <li>This work with industrial arms led to my independent project, JointGuard AI.</li>
+        </ul>
+        <div class="shots"><div class="thumb photo"><img src="images/hcmut-1.jpg" alt="Receiving the internship certificate at the Yaskawa Mechatro Lab" loading="lazy"></div><div class="thumb photo"><img src="images/hcmut-2.jpg" alt="Programming an industrial robot with the teach pendant" loading="lazy"></div><div class="thumb photo"><img src="images/hcmut-3.jpg" alt="Testing obstacle avoidance on a mobile robot" loading="lazy"></div><div class="thumb photo"><img src="images/hcmut-4.jpg" alt="Working on the robot control GUI" loading="lazy"></div></div>
+        <div class="links" style="margin-top:12px"><a href="https://hcmut.edu.vn/" target="_blank" rel="noopener">HCMUT ↗</a><a href="https://drive.google.com/drive/u/0/folders/1V55qenLLvOpLrBjUfKzfXGocGLgHwEEj" target="_blank" rel="noopener">Certificate ↗</a></div>
+      </div>
+      <div class="tl rv" style="--i:1"><div class="when">Jan – May 2026</div><h3>Physics Lab Assistant · VNU-HCM High School for the Gifted</h3>
+        <p>Calibrated optics and oscillation apparatus; wrote LaTeX lab reports with error analysis (advisor: M.Sc. Trinh Thu Thuy).</p>
+        <div class="shots"><div class="thumb photo"><img src="images/phys-1.jpg" alt="Students running an optics experiment" loading="lazy"></div><div class="thumb photo"><img src="images/phys-2.jpg" alt="Physics lab session in progress" loading="lazy"></div><div class="thumb photo"><img src="images/phys-3.jpg" alt="Setting up lab apparatus" loading="lazy"></div><div class="thumb photo"><img src="images/phys-4.jpg" alt="Lab groups calibrating equipment" loading="lazy"></div></div>
+        <div class="links" style="margin-top:12px"><a href="https://drive.google.com/drive/u/0/folders/1jhs3tHF7-ydRpsWs9-9m1WbtDivto-v5" target="_blank" rel="noopener">Lab reports ↗</a></div>
+      </div>
+      <div class="tl rv" style="--i:2"><div class="when">Jun – Jul 2026</div><h3>Project Intern · TA Communications</h3>
+        <p>Supervised by Ms. Anna Thuy, Sales &amp; Operations Manager.</p>
+        <ul class="bul" style="margin-top:10px">
+          <li>Analyzed store-level sales datasets for three international consumer brands in Excel and Python, quantifying growth rates, variability and trends.</li>
+          <li>Built dashboards that turned raw data into statistical summaries for comparing stores.</li>
+        </ul>
+        <div class="shots" style="--n:3"><div class="thumb photo"><img src="images/ta-cert.jpg" alt="TA Communications certificate of internship" loading="lazy"></div><div class="thumb">PHOTO</div><div class="thumb">PHOTO</div></div>
+        <div class="links" style="margin-top:12px"><a href="https://drive.google.com/drive/u/0/folders/1c9mo1iDWQ3LoeN-WNZ31i3k6pCjGJmaj" target="_blank" rel="noopener">Certificate ↗</a></div>
+      </div>
+    </div>
+  </div></section>
+</div>
+
+<!-- ===================== LEADERSHIP: THE PROMETHEAN FLAME ===================== -->
+<div class="view" id="v-promethean-flame">
+  <div class="wrap page-hero">
+    <div>
+      <a class="back rv-l" href="#leadership">← Leadership</a>
+      <div class="label rv-l">Founder &amp; Head of Academic Department · Jun 2025 – Mar 2026</div>
+      <h1 class="rv-l" style="--i:1"><span class="ph">The Promethean</span><em>Flame</em></h1>
+      <p class="rv-l" style="--i:2">A student-run tutoring project bringing STEM support to underserved students, from a teaching trip in Dong Thap to students in storm- and flood-affected areas.</p>
+      <div class="links rv" style="--i:3"><a href="https://www.facebook.com/theprometheanflame.project" target="_blank" rel="noopener">Fanpage ↗</a><a href="https://ngoinhatritue.org/" target="_blank" rel="noopener">Ngôi Nhà Trí Tuệ ↗</a><a href="https://nntt.edtop.net/about/overview/index.php" target="_blank" rel="noopener">EDTOP ↗</a><a href="https://thanhnien.vn/hoc-sinh-truong-chuyen-tphcm-truyen-lua-stem-den-tinh-xa-185251026085955751.htm" target="_blank" rel="noopener">Thanh Nien article ↗</a></div>
+    </div>
+    <div class="collage">
+      <div class="thumb photo a float rv-z" style="--i:1"><img src="images/tutoring-class.jpg" alt="Promethean Flame tutoring class" loading="lazy"></div>
+      <div class="thumb photo b float d2 rv-z" style="--i:2"><img src="images/dong-thap-trip.jpg" alt="Group photo with students on the Dong Thap teaching trip" loading="lazy"></div>
+      <div class="thumb photo c float d3 rv-z" style="--i:3"><img src="images/thanh-nien-article.jpg" alt="Team at Thanh Nien Newspaper" loading="lazy"></div>
+      <div class="ring"></div>
+    </div>
+  </div>
+  <section><div class="wrap">
+    <div class="detail">
+      <div class="panel rv" style="--i:0">
+        <h3>What we did</h3>
+        <ul class="bul">
+          <li>Grew a 40+ member tutoring club and led a 10-member team teaching Math, Physics and Chemistry to 50+ students.</li>
+          <li>Ran a one-week teaching trip to Dong Thap with <a href="#mathmarvel">MathMarvel</a>.</li>
+          <li>Collaborated with <b>Ngôi Nhà Trí Tuệ</b> to tutor 70+ students in storm- and flood-affected areas, helping 85% keep up with coursework.</li>
+          <li>Supported development of its learning platform EDTOP, and used <a href="#scam-shield">Scam Shield</a> to teach students to spot online scams.</li>
+          <li>Featured in <b>Thanh Nien Newspaper</b>.</li>
+        </ul>
+      </div>
+      <div class="scores">
+        <div class="panel rv-z" style="--i:1"><div class="label">Club members</div><div class="num"><span data-count="40" data-dec="0">40</span>+</div><p>Volunteer tutors</p></div>
+        <div class="panel rv-z" style="--i:2"><div class="label">Students tutored</div><div class="num"><span data-count="120" data-dec="0">120</span>+</div><p>50+ directly, 70+ with Ngôi Nhà Trí Tuệ</p></div>
+        <div class="panel rv-z" style="--i:3"><div class="label">Kept up with coursework</div><div class="num"><span data-count="85" data-dec="0">85</span>%</div><p>Students in flood-affected areas</p></div>
+        <div class="panel rv-z" style="--i:4"><div class="label">Page followers</div><div class="num"><span data-count="1600" data-dec="0">1600</span>+</div><p>Facebook fanpage</p></div>
+      </div>
+    </div>
+    <div class="head rv" style="margin-top:48px"><h2>Gallery</h2><span class="ref">classes · Dong Thap · press</span></div>
+    <div class="gallery big">
+      <div class="thumb photo rv-z" style="--i:0"><img src="images/promethean-1.jpg" alt="&quot;The Promethean Flame is coming&quot; written on a chalkboard" loading="lazy"></div>
+      <div class="thumb photo rv-z" style="--i:1"><img src="images/promethean-2.jpg" alt="Outdoor activity with Promethean Flame students" loading="lazy"></div>
+      <div class="thumb photo rv-z" style="--i:2"><img src="images/promethean-3.jpg" alt="Promethean Flame students gathered outside" loading="lazy"></div>
+      <div class="thumb photo rv-z" style="--i:3"><img src="images/promethean-4.jpg" alt="Online meeting with Ngoi Nha Tri Tue" loading="lazy"></div>
+      <div class="thumb photo rv-z" style="--i:4"><img src="images/thanh-nien-article.jpg" alt="Team at Thanh Nien Newspaper" loading="lazy"></div>
+      <div class="thumb photo rv-z" style="--i:5"><img src="images/promethean-cert.jpg" alt="Certificate for Head of Academic Department, The Promethean Flame" loading="lazy"></div>
+    </div>
+    <nav class="pager" aria-label="Leadership pages"><a class="prev" href="#mathmarvel"><span>← Previous</span><b>MathMarvel</b></a><a class="next" href="#leadership"><span>Back to →</span><b>Leadership</b></a></nav>
+  </div></section>
+</div>
+
+<!-- ===================== BEYOND THE LAB ===================== -->
+<div class="view" id="v-hobby">
+  <div class="wrap page-hero">
+    <div>
+      <div class="label rv-l">Skills · Volunteering · Interests</div>
+      <h1 class="rv-l" style="--i:1"><span class="ph">Beyond</span><em>the Lab</em></h1>
+      <p class="rv-l" style="--i:2">The tools I work with, the communities I volunteer for, and the games I play when the telescope is packed away: Chinese chess, soccer and table tennis.</p>
+    </div>
+    <div class="collage">
+      <div class="thumb a float rv-z" style="--i:1">CHINESE CHESS</div>
+      <div class="thumb b float d2 rv-z" style="--i:2">SOCCER</div>
+      <div class="thumb photo c float d3 rv-z" style="--i:3"><img src="images/gia-lai-trip.jpg" alt="Handing out supplies in Chu Puh, Gia Lai" loading="lazy"></div>
+      <div class="ring"></div>
+    </div>
+  </div>
+  <section><div class="wrap">
+    <div class="head rv"><h2>Skills</h2><span class="ref">§ 07</span></div>
+    <div class="skills">
+      <div class="panel rv" style="--i:0"><h3>Engineering &amp; Math</h3><div class="tools"><span>Robot kinematics</span><span>Robot dynamics</span><span>Control systems</span><span>ROS</span><span>Time-series analysis</span><span>Multi-objective optimization</span></div></div>
+      <div class="panel rv" style="--i:1"><h3>Programming &amp; Tools</h3><div class="tools"><span>Python</span><span>scikit-learn</span><span>Astropy</span><span>Streamlit</span><span>C++</span><span>Java</span><span>MATLAB/Simulink</span><span>PyBullet</span><span>Arduino</span><span>Git</span></div></div>
+      <div class="panel rv" style="--i:2"><h3>Languages &amp; Interests</h3><div class="tools"><span>Vietnamese (native)</span><span>English (IELTS 7.5)</span><span>Chinese chess</span><span>Soccer</span><span>Table tennis</span></div></div>
+    </div>
+
+    <div class="head rv" style="margin-top:48px"><h2>Volunteer Work</h2><span class="ref">§ 08</span></div>
+    <div class="vol">
+      <div class="panel rv" style="--i:0"><div><div class="when">Sep – Oct 2026</div><h3>Tree-Planting Donor · DalaGroup, Da Lat</h3></div><div class="links"><a href="https://dalagroup.vn/en/home-english/" target="_blank" rel="noopener">Website ↗</a><a href="https://drive.google.com/file/d/1SrQIlZAH06zRKY7p_i3Gq3xEUwzEWJmf/view?usp=drive_link" target="_blank" rel="noopener">Certificate ↗</a></div>
+        <div class="shots" style="--n:3"><div class="thumb photo"><img src="images/dala-cert.jpg" alt="Dala Forest tree-planting certificate" loading="lazy"></div><div class="thumb">PHOTO</div><div class="thumb">PHOTO</div></div></div>
+      <div class="panel rv" style="--i:1"><div><div class="when">Feb – May 2025</div><h3>Teaching Volunteer · Sugar Vietnam – Duong Den Tri Thuc</h3></div><div class="links"><a href="https://www.facebook.com/sugarvn.ddtt/" target="_blank" rel="noopener">Fanpage ↗</a><a href="https://drive.google.com/file/d/1HmM__f7XEvPxu_i12lVhsE8zC57IBg0U/view?usp=drive_link" target="_blank" rel="noopener">Certificate ↗</a></div>
+        <div class="shots" style="--n:3"><div class="thumb photo"><img src="images/sugar-cert.jpg" alt="Sugar Vietnam teaching volunteer certificate" loading="lazy"></div><div class="thumb">PHOTO</div><div class="thumb">PHOTO</div></div></div>
+      <div class="panel rv" style="--i:2"><div><div class="when">Aug 2024</div><h3>Supply distribution to 300+ ethnic minority families · Chu Puh, Gia Lai</h3></div><div class="links"><a href="https://chupuh.gialai.gov.vn/" target="_blank" rel="noopener">Website ↗</a><a href="https://drive.google.com/drive/folders/1TQPdKsrFyy-XM_MheEv_QQDPg1a4xN8y?usp=drive_link" target="_blank" rel="noopener">Images ↗</a></div>
+        <div class="shots"><div class="thumb photo"><img src="images/gia-lai-1.jpg" alt="Supply distribution at the Chu Puh community hall" loading="lazy"></div><div class="thumb photo"><img src="images/gia-lai-2.jpg" alt="Families gathering for supplies in Gia Lai" loading="lazy"></div><div class="thumb photo"><img src="images/gia-lai-3.jpg" alt="Giving supplies to children in Gia Lai" loading="lazy"></div><div class="thumb photo"><img src="images/gia-lai-4.jpg" alt="Mother and child at the Gia Lai distribution" loading="lazy"></div></div></div>
+    </div>
+
+    <div class="head rv" style="margin-top:48px"><h2>Off the Clock</h2><span class="ref">§ 09 · chess · soccer · table tennis</span></div>
+    <div class="gallery">
+      <div class="thumb rv-z" style="--i:0">CHINESE CHESS</div><div class="thumb rv-z" style="--i:1">SOCCER</div><div class="thumb rv-z" style="--i:2">TABLE TENNIS</div><div class="thumb rv-z" style="--i:3">PHOTO</div>
+    </div>
+  </div></section>
+</div>
+
+<!-- ===================== LEADERSHIP: DETAIL PAGES ===================== -->
+<div class="view" id="v-pasc">
+  <div class="wrap page-hero">
+    <div>
+      <a class="back rv-l" href="#leadership">← Leadership</a>
+      <div class="label rv-l">Vice President · Sep 2025 – Present</div>
+      <h1 class="rv-l" style="--i:1"><span class="ph">PAsC</span><em>Astronomy Club</em></h1>
+      <p class="rv-l" style="--i:2">The astronomy club of VNU-HCM High School for the Gifted. I help run its 40 members, a student research team, and public workshops that put telescopes in front of hundreds of people.</p>
+      <div class="links rv" style="--i:3"><a href="https://www.facebook.com/ptnkastronomyclub" target="_blank" rel="noopener">Fanpage ↗</a><a href="https://drive.google.com/drive/u/0/folders/1c2HT-epBzwCxnD8LMttI07JGfefEfmVu" target="_blank" rel="noopener">HELIOS ↗</a></div>
+    </div>
+    <div class="collage">
+      <div class="thumb photo a float rv-z" style="--i:1"><img src="images/pasc-helios.jpg" alt="PAsC HELIOS workshop talk on the Solar System" loading="lazy"></div>
+      <div class="thumb photo b float d2 rv-z" style="--i:2"><img src="images/pasc-4.jpg" alt="PAsC team at Math Open Day Da Lat" loading="lazy"></div>
+      <div class="thumb photo c float d3 rv-z" style="--i:3"><img src="images/pasc-7.jpg" alt="Queue at the PAsC booth, Math Open Day HCMC" loading="lazy"></div>
+      <div class="ring"></div>
+    </div>
+  </div>
+  <section><div class="wrap">
+    <div class="detail">
+      <div class="panel rv" style="--i:0">
+        <h3>What I did</h3>
+        <ul class="bul">
+          <li>Managed a 40-member club; led a 15-student team writing astronomy research articles and organized the HELIOS workshop for 40+ high schoolers.</li>
+          <li>Co-directed "The SENSUS" STEM event with USAC and Tran Dai Nghia's Physics Club for 100+ attendees, judged by Dr. Tran Hai Cat.</li>
+          <li>Ran an interactive astronomy workshop at Math Open Day (HCMC &amp; Da Lat) for 200+ attendees; raised 7,000,000 VND (~US$270) in sponsorships.</li>
+          <li>Built the club's D70F700 refractor telescope, now its main instrument for public solar viewing.</li>
+        </ul>
+      </div>
+      <div class="scores">
+        <div class="panel rv-z" style="--i:1"><div class="label">Members</div><div class="num"><span data-count="40" data-dec="0">40</span></div></div>
+        <div class="panel rv-z" style="--i:2"><div class="label">Workshop attendees</div><div class="num"><span data-count="200" data-dec="0">200</span>+</div></div>
+        <div class="panel rv-z" style="--i:3"><div class="label">Research team</div><div class="num"><span data-count="15" data-dec="0">15</span></div><p>Student writers</p></div>
+        <div class="panel rv-z" style="--i:4"><div class="label">Sponsorship</div><div class="num"><span data-count="7" data-dec="0">7</span>M</div><p>VND raised</p></div>
+      </div>
+    </div>
+    <div class="head rv" style="margin-top:48px"><h2>Gallery</h2><span class="ref">HELIOS · Math Open Day</span></div>
+    <div class="gallery big">
+      <div class="thumb photo rv-z" style="--i:0"><img src="images/pasc-1.jpg" alt="HELIOS workshop for high schoolers" loading="lazy"></div>
+      <div class="thumb photo rv-z" style="--i:1"><img src="images/pasc-2.jpg" alt="Students working on a HELIOS activity" loading="lazy"></div>
+      <div class="thumb photo rv-z" style="--i:2"><img src="images/pasc-5.jpg" alt="HELIOS participants in the lab" loading="lazy"></div>
+      <div class="thumb photo rv-z" style="--i:3"><img src="images/pasc-3.jpg" alt="PAsC astronomy booth at Math Open Day HCMC" loading="lazy"></div>
+      <div class="thumb photo rv-z" style="--i:4"><img src="images/pasc-6.jpg" alt="Children at the PAsC activity table, Da Lat" loading="lazy"></div>
+      <div class="thumb photo rv-z" style="--i:5"><img src="images/pasc-8.jpg" alt="Hands-on robotics at the PAsC booth" loading="lazy"></div>
+    </div>
+    <nav class="pager" aria-label="Leadership pages"><a class="prev" href="#leadership"><span>← Back to</span><b>Leadership</b></a><a class="next" href="#usac"><span>Next →</span><b>USAC Astronomy Club</b></a></nav>
+  </div></section>
+</div>
+
+<div class="view" id="v-usac">
+  <div class="wrap page-hero">
+    <div>
+      <a class="back rv-l" href="#leadership">← Leadership</a>
+      <div class="label rv-l">Vice President → Project Lead · Jan 2025 – Present</div>
+      <h1 class="rv-l" style="--i:1"><span class="ph">USAC</span><em>Astronomy Club</em></h1>
+      <p class="rv-l" style="--i:2">The University of Science astronomy club, with 24,000+ followers. I started out organizing events and now lead small product projects.</p>
+      <div class="links rv" style="--i:3"><a href="https://www.facebook.com/clbusac" target="_blank" rel="noopener">Fanpage ↗</a><a href="#astrosphere">AstroSphere →</a></div>
+    </div>
+    <div class="collage">
+      <div class="thumb a float rv-z" style="--i:1">OBSERVING NIGHT</div>
+      <div class="thumb b float d2 rv-z" style="--i:2">SPACE SCIENCE FESTIVAL</div>
+      <div class="thumb c float d3 rv-z" style="--i:3">TALKSHOW</div>
+      <div class="ring"></div>
+    </div>
+  </div>
+  <section><div class="wrap">
+    <div class="detail">
+      <div class="panel rv" style="--i:0">
+        <h3>What I did</h3>
+        <ul class="bul">
+          <li>Coordinated talkshows, star- and Moon-observing nights and school exchanges.</li>
+          <li>Helped run booths at the 2025 Space Science Festival (solar observing for hundreds of visitors) and 2025 Student–Enterprise Day alongside 33 companies.</li>
+          <li>Now lead small product projects, including AstroSphere's orbital computation team.</li>
+        </ul>
+      </div>
+      <div class="scores">
+        <div class="panel rv-z" style="--i:1"><div class="label">Followers</div><div class="num"><span data-count="24000" data-dec="0">24000</span>+</div></div>
+        <div class="panel rv-z" style="--i:2"><div class="label">Partner companies</div><div class="num"><span data-count="33" data-dec="0">33</span></div><p>Student–Enterprise Day 2025</p></div>
+      </div>
+    </div>
+    <div class="head rv" style="margin-top:48px"><h2>Gallery</h2><span class="ref">add photos</span></div>
+    <div class="gallery big">
+      <div class="thumb rv-z" style="--i:0">PHOTO</div><div class="thumb rv-z" style="--i:1">PHOTO</div><div class="thumb rv-z" style="--i:2">PHOTO</div>
+    </div>
+    <nav class="pager" aria-label="Leadership pages"><a class="prev" href="#pasc"><span>← Previous</span><b>PAsC Astronomy Club</b></a><a class="next" href="#solar-pulse-hub"><span>Next →</span><b>Solar Pulse Hub</b></a></nav>
+  </div></section>
+</div>
+
+<div class="view" id="v-solar-pulse-hub">
+  <div class="wrap page-hero">
+    <div>
+      <a class="back rv-l" href="#leadership">← Leadership</a>
+      <div class="label rv-l">Co-Founder · Apr 2026 – Present</div>
+      <h1 class="rv-l" style="--i:1"><span class="ph">Solar Pulse</span><em>Hub</em></h1>
+      <p class="rv-l" style="--i:2">An e-waste and solar-energy initiative: we raise funds by collecting e-waste for recycling, donate solar lights and scholarships, and teach children how energy works.</p>
+      <div class="links rv" style="--i:3"><a href="https://solarpulsehub.lovable.app/" target="_blank" rel="noopener">Website ↗</a></div>
+    </div>
+    <div class="collage">
+      <div class="thumb photo a float rv-z" style="--i:1"><img src="images/solar-1.jpg" alt="Solar Pulse Hub fundraising station" loading="lazy"></div>
+      <div class="thumb photo b float d2 rv-z" style="--i:2"><img src="images/solar-2.jpg" alt="Handing over solar lights at Suoi Tuong" loading="lazy"></div>
+      <div class="thumb photo c float d3 rv-z" style="--i:3"><img src="images/solar-4.jpg" alt="Teaching children at Tam Duc Shelter" loading="lazy"></div>
+      <div class="ring"></div>
+    </div>
+  </div>
+  <section><div class="wrap">
+    <div class="detail">
+      <div class="panel rv" style="--i:0">
+        <h3>What I did</h3>
+        <ul class="bul">
+          <li>Raised 15,000,000 VND (~US$570) by collecting e-waste for recycling.</li>
+          <li>Taught 6+ sessions on kinetic and solar energy to 40+ children at Tam Duc Shelter.</li>
+          <li>Donated 7 solar-powered lights and supplies worth 11,000,000 VND, plus 40 scholarships, to Tam Duc Shelter and Suoi Tuong Floating Village.</li>
+        </ul>
+      </div>
+      <div class="scores">
+        <div class="panel rv-z" style="--i:1"><div class="label">Raised</div><div class="num"><span data-count="15" data-dec="0">15</span>M</div><p>VND from e-waste</p></div>
+        <div class="panel rv-z" style="--i:2"><div class="label">Children taught</div><div class="num"><span data-count="40" data-dec="0">40</span>+</div><p>6+ energy sessions</p></div>
+        <div class="panel rv-z" style="--i:3"><div class="label">Solar lights</div><div class="num"><span data-count="7" data-dec="0">7</span></div><p>Donated</p></div>
+        <div class="panel rv-z" style="--i:4"><div class="label">Scholarships</div><div class="num"><span data-count="40" data-dec="0">40</span></div></div>
+      </div>
+    </div>
+    <div class="head rv" style="margin-top:48px"><h2>Gallery</h2><span class="ref">Fundraising · Suoi Tuong · Tam Duc</span></div>
+    <div class="gallery big">
+      <div class="thumb photo rv-z" style="--i:0"><img src="images/solar-5.jpg" alt="Selling plants at the fundraising station" loading="lazy"></div>
+      <div class="thumb photo rv-z" style="--i:1"><img src="images/solar-6.jpg" alt="Loading donations for Suoi Tuong" loading="lazy"></div>
+      <div class="thumb photo rv-z" style="--i:2"><img src="images/solar-3.jpg" alt="Delivering donated supplies" loading="lazy"></div>
+      <div class="thumb photo rv-z" style="--i:3"><img src="images/solar-7.jpg" alt="Charity class at Suoi Tuong Floating Village" loading="lazy"></div>
+      <div class="thumb photo rv-z" style="--i:4"><img src="images/solar-8.jpg" alt="Energy lesson at Tam Duc Shelter" loading="lazy"></div>
+      <div class="thumb photo rv-z" style="--i:5"><img src="images/solar-4.jpg" alt="Teaching children at Tam Duc Shelter" loading="lazy"></div>
+    </div>
+    <nav class="pager" aria-label="Leadership pages"><a class="prev" href="#usac"><span>← Previous</span><b>USAC Astronomy Club</b></a><a class="next" href="#mathmarvel"><span>Next →</span><b>MathMarvel</b></a></nav>
+  </div></section>
+</div>
+
+<div class="view" id="v-mathmarvel">
+  <div class="wrap page-hero">
+    <div>
+      <a class="back rv-l" href="#leadership">← Leadership</a>
+      <div class="label rv-l">President · Jan 2025 – Present</div>
+      <h1 class="rv-l" style="--i:1"><span class="ph">Math</span><em>Marvel</em></h1>
+      <p class="rv-l" style="--i:2">A STEM outreach club. Our biggest project, SENSTEM, brought a hands-on science fair and classes to students in Dong Thap.</p>
+      <div class="links rv" style="--i:3"><a href="https://www.facebook.com/MathMarvel.Club" target="_blank" rel="noopener">Fanpage ↗</a></div>
+    </div>
+    <div class="collage">
+      <div class="thumb photo a float rv-z" style="--i:1"><img src="images/mm-1.jpg" alt="Teaching a class in Dong Thap" loading="lazy"></div>
+      <div class="thumb photo b float d2 rv-z" style="--i:2"><img src="images/dong-thap-trip.jpg" alt="Group photo with students in Dong Thap" loading="lazy"></div>
+      <div class="thumb photo c float d3 rv-z" style="--i:3"><img src="images/senstem-fair.jpg" alt="SENSTEM science fair game" loading="lazy"></div>
+      <div class="ring"></div>
+    </div>
+  </div>
+  <section><div class="wrap">
+    <div class="detail">
+      <div class="panel rv" style="--i:0">
+        <h3>What I did</h3>
+        <ul class="bul">
+          <li>Ran "SENSTEM," a STEM outreach campaign in Dong Thap with a hands-on science fair (water rockets, remote-controlled cars).</li>
+          <li>Organized English communication classes for 100 students.</li>
+          <li>Distributed 28,000,000 VND (~US$1,080) in aid, including 30 health insurance scholarships and 100+ school supply packages.</li>
+        </ul>
+      </div>
+      <div class="scores">
+        <div class="panel rv-z" style="--i:1"><div class="label">Students taught</div><div class="num"><span data-count="100" data-dec="0">100</span></div><p>English classes</p></div>
+        <div class="panel rv-z" style="--i:2"><div class="label">Aid distributed</div><div class="num"><span data-count="28" data-dec="0">28</span>M</div><p>VND</p></div>
+        <div class="panel rv-z" style="--i:3"><div class="label">Health insurance</div><div class="num"><span data-count="30" data-dec="0">30</span></div><p>Scholarships</p></div>
+        <div class="panel rv-z" style="--i:4"><div class="label">Supply packages</div><div class="num"><span data-count="100" data-dec="0">100</span>+</div></div>
+      </div>
+    </div>
+    <div class="head rv" style="margin-top:48px"><h2>Gallery</h2><span class="ref">SENSTEM · Dong Thap</span></div>
+    <div class="gallery big">
+      <div class="thumb photo rv-z" style="--i:0"><img src="images/mm-2.jpg" alt="Hands-on science experiment with a student" loading="lazy"></div>
+      <div class="thumb photo rv-z" style="--i:1"><img src="images/mm-3.jpg" alt="Science demo at the front of the class" loading="lazy"></div>
+      <div class="thumb photo rv-z" style="--i:2"><img src="images/mm-5.jpg" alt="Classroom activity with prizes" loading="lazy"></div>
+      <div class="thumb photo rv-z" style="--i:3"><img src="images/mm-4.jpg" alt="Remote-controlled car activity with children" loading="lazy"></div>
+      <div class="thumb photo rv-z" style="--i:4"><img src="images/mm-8.jpg" alt="Science fair game station" loading="lazy"></div>
+      <div class="thumb photo rv-z" style="--i:5"><img src="images/mm-6.jpg" alt="Building a project together" loading="lazy"></div>
+    </div>
+    <nav class="pager" aria-label="Leadership pages"><a class="prev" href="#solar-pulse-hub"><span>← Previous</span><b>Solar Pulse Hub</b></a><a class="next" href="#promethean-flame"><span>Next →</span><b>The Promethean Flame</b></a></nav>
+  </div></section>
+</div>
+
+<!-- ===================== PROJECTS: DETAIL PAGES ===================== -->
+<div class="view" id="v-jointguard">
+  <div class="wrap page-hero">
+    <div>
+      <a class="back rv-l" href="#projects">← Projects</a>
+      <div class="label rv-l">Founder · Jan 2026 – Present</div>
+      <h1 class="rv-l" style="--i:1"><span class="ph">JointGuard</span><em>AI</em></h1>
+      <p class="rv-l" style="--i:2">Can control signals alone reveal rising joint friction in robot arms? Advised by Dr. Nguyen Vinh Hao (HCMUT) and Mr. Phung Van Hung.</p>
+      <div class="links rv" style="--i:3"><a href="https://github.com/chechoutanh/JointGuard-AI" target="_blank" rel="noopener">GitHub ↗</a><a href="https://jointguardaii.vercel.app/" target="_blank" rel="noopener">Project page ↗</a></div>
+    </div>
+    <div class="collage">
+      <div class="thumb photo a float rv-z" style="--i:1"><img src="images/jg-2.jpg" alt="Simulated robot arm raising an anomaly alarm" loading="lazy"></div>
+      <div class="thumb photo b float d2 rv-z" style="--i:2"><img src="images/jg-1.jpg" alt="JointGuard AI project page" loading="lazy"></div>
+      <div class="thumb photo c float d3 rv-z" style="--i:3"><img src="images/jg-4.jpg" alt="How a joint fault shows up inside the physics" loading="lazy"></div>
+      <div class="ring"></div>
+    </div>
+  </div>
+  <section><div class="wrap">
+    <div class="detail">
+      <div class="panel rv" style="--i:0">
+        <h3>How it works</h3>
+        <ul class="bul">
+          <li>Built a physics-based robot-arm simulator and fault-injection framework using only torque and tracking error.</li>
+          <li>Random Forest detector under a leakage-free protocol: <b>0.21 false alarms/min</b>; identified the faulty joint in <b>30/32</b> runs.</li>
+          <li>Reported its failure on heavier, faster held-out conditions (3.9 false alarms/min); released open source (MIT) with tests, a technical report and a demo.</li>
+          <li>Grew out of my internship with industrial robot arms at HCMUT.</li>
+        </ul>
+        <div class="tools"><span>PyBullet</span><span>Python</span><span>scikit-learn</span><span>Robot dynamics</span></div>
+      </div>
+      <div class="scores">
+        <div class="panel rv-z" style="--i:1"><div class="label">Faulty runs caught</div><div class="num">32/32</div><p>vs. 16/32 for baseline</p></div>
+        <div class="panel rv-z" style="--i:2"><div class="label">Faulty joint found</div><div class="num">30/32</div><p>Runs</p></div>
+        <div class="panel rv-z" style="--i:3"><div class="label">False alarms</div><div class="num"><span data-count="0.21" data-dec="2">0.21</span></div><p>Per minute</p></div>
+        <div class="panel rv-z" style="--i:4"><div class="label">Held-out failure</div><div class="num"><span data-count="3.9" data-dec="1">3.9</span></div><p>False alarms/min, reported openly</p></div>
+      </div>
+    </div>
+    <div class="head rv" style="margin-top:48px"><h2>Gallery</h2><span class="ref">project page · simulator</span></div>
+    <div class="gallery big">
+      <div class="thumb photo rv-z" style="--i:0"><img src="images/jg-1.jpg" alt="JointGuard AI project page" loading="lazy"></div>
+      <div class="thumb photo rv-z" style="--i:1"><img src="images/jg-2.jpg" alt="Simulated robot arm raising an anomaly alarm" loading="lazy"></div>
+      <div class="thumb photo rv-z" style="--i:2"><img src="images/jg-3.jpg" alt="Two-joint arm model built from the equations of motion" loading="lazy"></div>
+      <div class="thumb photo rv-z" style="--i:3"><img src="images/jg-4.jpg" alt="How a joint fault shows up inside the physics" loading="lazy"></div>
+    </div>
+    <nav class="pager" aria-label="Project pages"><a class="prev" href="#projects"><span>← Back to</span><b>Projects</b></a><a class="next" href="#telescope"><span>Next →</span><b>D70F700 Telescope</b></a></nav>
+  </div></section>
+</div>
+
+<div class="view" id="v-telescope">
+  <div class="wrap page-hero">
+    <div>
+      <a class="back rv-l" href="#projects">← Projects</a>
+      <div class="label rv-l">Leader · PAsC · Sep 2025 – Present</div>
+      <h1 class="rv-l" style="--i:1"><span class="ph">D70F700</span><em>Refractor Telescope</em></h1>
+      <p class="rv-l" style="--i:2">A homemade 70 mm, f/10 achromatic refractor, built from calculated optical lengths and a PVC tube, that has become PAsC's main instrument for safe public solar viewing.</p>
+      <div class="links rv" style="--i:3"><a href="https://drive.google.com/drive/u/0/folders/1OlRFkAxIN9be-bYSI30VybXsZ67RZp_O" target="_blank" rel="noopener">Product &amp; observations ↗</a></div>
+    </div>
+    <div class="collage">
+      <div class="thumb photo a float rv-z" style="--i:1"><img src="images/tel-1.jpg" alt="A visitor looking through the telescope" loading="lazy"></div>
+      <div class="thumb photo b float d2 rv-z" style="--i:2"><img src="images/tel-2.jpg" alt="The D70F700 refractor set up for solar observing" loading="lazy"></div>
+      <div class="thumb photo c float d3 rv-z" style="--i:3"><img src="images/tel-5.jpg" alt="Telescope construction plan" loading="lazy"></div>
+      <div class="ring"></div>
+    </div>
+  </div>
+  <section><div class="wrap">
+    <div class="detail">
+      <div class="panel rv" style="--i:0">
+        <h3>How I built it</h3>
+        <ul class="bul">
+          <li>Designed and built a 70 mm, f/10 achromatic refractor, calculating optical lengths to fabricate the PVC tube assembly and limit chromatic aberration.</li>
+          <li>Reached <b>20x magnification</b> with available components and a mount borrowed from another club.</li>
+          <li>Main instrument at PAsC events, letting <b>300+ attendees</b> safely view the Sun through a solar filter.</li>
+        </ul>
+        <div class="tools"><span>Optics</span><span>PVC fabrication</span><span>Solar filter</span></div>
+      </div>
+      <div class="scores">
+        <div class="panel rv-z" style="--i:1"><div class="label">Aperture</div><div class="num"><span data-count="70" data-dec="0">70</span><small> mm</small></div></div>
+        <div class="panel rv-z" style="--i:2"><div class="label">Focal ratio</div><div class="num">f/10</div><p>700 mm focal length</p></div>
+        <div class="panel rv-z" style="--i:3"><div class="label">Magnification</div><div class="num"><span data-count="20" data-dec="0">20</span>x</div></div>
+        <div class="panel rv-z" style="--i:4"><div class="label">Solar viewers</div><div class="num"><span data-count="300" data-dec="0">300</span>+</div></div>
+      </div>
+    </div>
+    <div class="head rv" style="margin-top:48px"><h2>Gallery</h2><span class="ref">build plan · public viewing</span></div>
+    <div class="gallery big">
+      <div class="thumb photo rv-z" style="--i:0"><img src="images/tel-1.jpg" alt="A visitor looking through the telescope" loading="lazy"></div>
+      <div class="thumb photo rv-z" style="--i:1"><img src="images/tel-2.jpg" alt="The D70F700 refractor set up for solar observing" loading="lazy"></div>
+      <div class="thumb photo rv-z" style="--i:2"><img src="images/tel-3.jpg" alt="Queue for solar viewing at Math Open Day Da Lat" loading="lazy"></div>
+      <div class="thumb photo rv-z" style="--i:3"><img src="images/tel-5.jpg" alt="Telescope construction plan: overview and theory" loading="lazy"></div>
+      <div class="thumb photo rv-z" style="--i:4"><img src="images/tel-4.jpg" alt="Construction diagram from the telescope build plan" loading="lazy"></div>
+    </div>
+    <nav class="pager" aria-label="Project pages"><a class="prev" href="#jointguard"><span>← Previous</span><b>JointGuard AI</b></a><a class="next" href="#scam-shield"><span>Next →</span><b>Scam Shield</b></a></nav>
+  </div></section>
+</div>
+
+<div class="view" id="v-scam-shield">
+  <div class="wrap page-hero">
+    <div>
+      <a class="back rv-l" href="#projects">← Projects</a>
+      <div class="label rv-l">Co-Founder &amp; Lead Developer · Oct 2025 – Present</div>
+      <h1 class="rv-l" style="--i:1"><span class="ph">Scam</span><em>Shield</em></h1>
+      <p class="rv-l" style="--i:2">An AI-powered tool that helps people recognize online scams. Placed 4th of 100 teams at RMIT Tech Camp 2026; competition partners: Google, AWS.</p>
+      <div class="links rv" style="--i:3"><a href="https://scammshield.vercel.app/#/home" target="_blank" rel="noopener">Website ↗</a><a href="https://github.com/chechoutanh/scam-call-shield" target="_blank" rel="noopener">GitHub ↗</a><a href="https://drive.google.com/drive/u/0/folders/1b_8OnO5-TToMKckTPdcab7PJxQBrHkd2" target="_blank" rel="noopener">Video demo ↗</a></div>
+    </div>
+    <div class="collage">
+      <div class="thumb photo a float rv-z" style="--i:1"><img src="images/ss-web.jpg" alt="Scam Shield home page" loading="lazy"></div>
+      <div class="thumb photo b float d2 rv-z" style="--i:2"><img src="images/ss-2.jpg" alt="Scam Shield warning-signs report" loading="lazy"></div>
+      <div class="thumb photo c float d3 rv-z" style="--i:3"><img src="images/rmit-tech-camp.jpg" alt="RMIT Tech Camp 2026 4th place certificate" loading="lazy"></div>
+      <div class="ring"></div>
+    </div>
+  </div>
+  <section><div class="wrap">
+    <div class="detail">
+      <div class="panel rv" style="--i:0">
+        <h3>What I built</h3>
+        <ul class="bul">
+          <li>Led development in a 4-member team: a bilingual (VI/EN) web app and browser extension combining ML models with rule-based checks on text, images, videos and files.</li>
+          <li>Used the tool with The Promethean Flame to teach <b>50+ rural students</b> to recognize scam signals.</li>
+        </ul>
+        <div class="tools"><span>Machine learning</span><span>Web app</span><span>Browser extension</span></div>
+      </div>
+      <div class="scores">
+        <div class="panel rv-z" style="--i:1"><div class="label">RMIT Tech Camp</div><div class="num">4th</div><p>Of 100 teams</p></div>
+        <div class="panel rv-z" style="--i:2"><div class="label">Active users</div><div class="num"><span data-count="100" data-dec="0">100</span>+</div></div>
+        <div class="panel rv-z" style="--i:3"><div class="label">Students taught</div><div class="num"><span data-count="50" data-dec="0">50</span>+</div><p>With The Promethean Flame</p></div>
+        <div class="panel rv-z" style="--i:4"><div class="label">Team</div><div class="num"><span data-count="4" data-dec="0">4</span></div><p>Members</p></div>
+      </div>
+    </div>
+    <div class="head rv" style="margin-top:48px"><h2>Gallery</h2><span class="ref">web app · award</span></div>
+    <div class="gallery big">
+      <div class="thumb photo rv-z" style="--i:0"><img src="images/ss-web.jpg" alt="Scam Shield home page" loading="lazy"></div>
+      <div class="thumb photo rv-z" style="--i:1"><img src="images/ss-1.jpg" alt="Scam Shield content checker" loading="lazy"></div>
+      <div class="thumb photo rv-z" style="--i:2"><img src="images/ss-2.jpg" alt="Scam Shield warning-signs report" loading="lazy"></div>
+      <div class="thumb photo rv-z" style="--i:3"><img src="images/ss-3.jpg" alt="Scam Shield guide to common scam types" loading="lazy"></div>
+      <div class="thumb photo rv-z" style="--i:4"><img src="images/ss-4.jpg" alt="Scam Shield analysis history" loading="lazy"></div>
+      <div class="thumb photo rv-z" style="--i:5"><img src="images/rmit-tech-camp.jpg" alt="RMIT Tech Camp 2026 4th place certificate" loading="lazy"></div>
+    </div>
+    <nav class="pager" aria-label="Project pages"><a class="prev" href="#telescope"><span>← Previous</span><b>D70F700 Telescope</b></a><a class="next" href="#skyscore"><span>Next →</span><b>SkyScore</b></a></nav>
+  </div></section>
+</div>
+
+<div class="view" id="v-skyscore">
+  <div class="wrap page-hero">
+    <div>
+      <a class="back rv-l" href="#projects">← Projects</a>
+      <div class="label rv-l">Developer · Feb 2025 – Present</div>
+      <h1 class="rv-l" style="--i:1"><span class="ph">Sky</span><em>Score</em></h1>
+      <p class="rv-l" style="--i:2">An open-source observing planner, advised by Dr. Nguyen Ngoc Duy. USAC and PAsC used it to plan 2+ observing trips and the HELIOS workshop.</p>
+      <div class="links rv" style="--i:3"><a href="https://skycore.streamlit.app/" target="_blank" rel="noopener">Website ↗</a><a href="https://github.com/chechoutanh/Skycore" target="_blank" rel="noopener">GitHub ↗</a></div>
+    </div>
+    <div class="collage">
+      <div class="thumb photo a float rv-z" style="--i:1"><img src="images/sky-1.jpg" alt="SkyScore app: best observing window and hourly score" loading="lazy"></div>
+      <div class="thumb photo b float d2 rv-z" style="--i:2"><img src="images/sky-2.jpg" alt="SkyScore criteria and predicted seeing charts" loading="lazy"></div>
+      <div class="thumb photo c float d3 rv-z" style="--i:3"><img src="images/sky-3.jpg" alt="SkyScore README: pipeline and mathematical model" loading="lazy"></div>
+      <div class="ring"></div>
+    </div>
+  </div>
+  <section><div class="wrap">
+    <div class="detail">
+      <div class="panel rv" style="--i:0">
+        <h3>How it works</h3>
+        <ul class="bul">
+          <li>Scores every hour on target altitude, moonlight, cloud cover and seeing, using Astropy and Open-Meteo forecasts.</li>
+          <li>Multi-objective optimization: best consecutive-hour window search and Pareto-front analysis without fixed weights.</li>
+          <li>Random Forest seeing predictor, openly trained on physics-based proxy labels; bilingual Streamlit app with pytest tests.</li>
+        </ul>
+        <div class="tools"><span>Astropy</span><span>Streamlit</span><span>Optimization</span></div>
+      </div>
+      <div class="scores">
+        <div class="panel rv-z" style="--i:1"><div class="label">Robustness checks</div><div class="num"><span data-count="500" data-dec="0">500</span></div><p>Random weight sets</p></div>
+        <div class="panel rv-z" style="--i:2"><div class="label">Observing trips</div><div class="num"><span data-count="2" data-dec="0">2</span>+</div><p>Planned by USAC &amp; PAsC</p></div>
+        <div class="panel rv-z" style="--i:3"><div class="label">Criteria</div><div class="num"><span data-count="4" data-dec="0">4</span></div><p>Altitude, Moon, cloud, seeing</p></div>
+      </div>
+    </div>
+    <div class="head rv" style="margin-top:48px"><h2>Gallery</h2><span class="ref">app · README</span></div>
+    <div class="gallery big">
+      <div class="thumb photo rv-z" style="--i:0"><img src="images/sky-1.jpg" alt="SkyScore app: best observing window and hourly score" loading="lazy"></div>
+      <div class="thumb photo rv-z" style="--i:1"><img src="images/sky-2.jpg" alt="SkyScore criteria and predicted seeing charts" loading="lazy"></div>
+      <div class="thumb photo rv-z" style="--i:2"><img src="images/sky-3.jpg" alt="SkyScore README: pipeline and mathematical model" loading="lazy"></div>
+    </div>
+    <nav class="pager" aria-label="Project pages"><a class="prev" href="#scam-shield"><span>← Previous</span><b>Scam Shield</b></a><a class="next" href="#astrosphere"><span>Next →</span><b>AstroSphere</b></a></nav>
+  </div></section>
+</div>
+
+<div class="view" id="v-astrosphere">
+  <div class="wrap page-hero">
+    <div>
+      <a class="back rv-l" href="#projects">← Projects</a>
+      <div class="label rv-l">Orbital Computation Lead · USAC · Feb 2026 – Present</div>
+      <h1 class="rv-l" style="--i:1"><span class="ph">Astro</span><em>Sphere</em></h1>
+      <p class="rv-l" style="--i:2">A browser-based 3D celestial-sphere simulator for teaching basic astronomy, built with the USAC Astronomy Club.</p>
+      <div class="links rv" style="--i:3"><a href="https://astrosphere.clbtvusac.com/" target="_blank" rel="noopener">Web app ↗</a><a href="#usac">USAC →</a></div>
+    </div>
+    <div class="collage">
+      <div class="thumb photo a float rv-z" style="--i:1"><img src="images/astro-2.jpg" alt="The 3D celestial sphere with the horizon and celestial pole" loading="lazy"></div>
+      <div class="thumb photo b float d2 rv-z" style="--i:2"><img src="images/astro-1.jpg" alt="AstroSphere celestial-sphere simulator" loading="lazy"></div>
+      <div class="thumb photo c float d3 rv-z" style="--i:3"><img src="images/astro-3.jpg" alt="Latitude and sky-rotation controls" loading="lazy"></div>
+      <div class="ring"></div>
+    </div>
+  </div>
+  <section><div class="wrap">
+    <div class="detail">
+      <div class="panel rv" style="--i:0">
+        <h3>What I led</h3>
+        <ul class="bul">
+          <li>Led the team computing sidereal time and equatorial–horizontal coordinate transformations, showing how the sky's motion depends on latitude.</li>
+          <li>Validated every transformation automatically; documented the model's limits (J2000.0 epoch; no precession, nutation or refraction).</li>
+        </ul>
+        <div class="tools"><span>Spherical astronomy</span><span>3D web</span><span>Automated tests</span></div>
+      </div>
+      <div class="scores">
+        <div class="panel rv-z" style="--i:1"><div class="label">Coordinate error</div><div class="num">&lt; 0.1°</div><p>vs. astronomy-engine</p></div>
+        <div class="panel rv-z" style="--i:2"><div class="label">Sidereal time</div><div class="num">IAU</div><p>1982 model</p></div>
+      </div>
+    </div>
+    <div class="head rv" style="margin-top:48px"><h2>Gallery</h2><span class="ref">web app</span></div>
+    <div class="gallery big">
+      <div class="thumb photo rv-z" style="--i:0"><img src="images/astro-1.jpg" alt="AstroSphere celestial-sphere simulator" loading="lazy"></div>
+      <div class="thumb photo rv-z" style="--i:1"><img src="images/astro-2.jpg" alt="The 3D celestial sphere with the horizon and celestial pole" loading="lazy"></div>
+      <div class="thumb photo rv-z" style="--i:2"><img src="images/astro-3.jpg" alt="Latitude and sky-rotation controls" loading="lazy"></div>
+    </div>
+    <nav class="pager" aria-label="Project pages"><a class="prev" href="#skyscore"><span>← Previous</span><b>SkyScore</b></a><a class="next" href="#projects"><span>Back to →</span><b>Projects</b></a></nav>
+  </div></section>
+</div>
+</main>
+
+<footer><div class="wrap">
+  <div class="tblock">
+    <div><div class="label">Operator</div><div class="big">Nguyen Minh Tuan Anh</div><div class="val contact-mail">teslagaming250@gmail.com</div></div>
+    <div><div class="label">Intended major</div><div class="val">Mechanical Eng.</div></div>
+    <div><div class="label">Based in</div><div class="val">Ho Chi Minh City</div></div>
+    <div><div class="label">Class of</div><div class="val">2027</div></div>
+  </div>
+  <div class="foot-note"><span>A robot-arm tinkerer, a telescope builder, and a STEM tutor.</span><span><a href="https://github.com/chechoutanh" target="_blank" rel="noopener" style="color:inherit">GitHub</a> · <a href="https://www.facebook.com/nmtangulyvcl/" target="_blank" rel="noopener" style="color:inherit">Facebook</a></span></div>
+</div></footer>
+
+<div class="peek" id="peek" aria-hidden="true"><img alt=""></div>
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <button class="x" type="button" aria-label="Close">✕</button>
+  <button class="prev" type="button" aria-label="Previous photo">‹</button>
+  <figure><img alt=""><figcaption></figcaption></figure>
+  <button class="next" type="button" aria-label="Next photo">›</button>
+</div>
+
+<script>
+(function(){
+  var pages=['home','achievements','leadership','projects','internship','hobby'];
+  // detail pages -> the nav section they belong to
+  var parent={pasc:'leadership',usac:'leadership','solar-pulse-hub':'leadership',mathmarvel:'leadership',
+    'promethean-flame':'leadership',
+    jointguard:'projects',telescope:'projects','scam-shield':'projects',skyscore:'projects',astrosphere:'projects'};
+  pages=pages.concat(Object.keys(parent));
+  var renamed={passion:'promethean-flame'}; // old links keep working
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var wipe=document.getElementById('wipe');
+  var current=null;
+
+  function countUp(root){
+    if(reduce) return;
+    root.querySelectorAll('[data-count]').forEach(function(el){
+      var to=parseFloat(el.dataset.count), dec=+el.dataset.dec||0, t0=null, dur=1400;
+      function step(t){ if(!t0) t0=t; var p=Math.min((t-t0)/dur,1), e=1-Math.pow(1-p,3);
+        el.textContent=(to*e).toFixed(dec); if(p<1) requestAnimationFrame(step); else el.textContent=to.toFixed(dec); }
+      el.textContent=(0).toFixed(dec); requestAnimationFrame(step);
+    });
+  }
+
+  function show(id, scrollTo){
+    id=renamed[id]||id;
+    if(pages.indexOf(id)<0) id='home';
+    var v=document.getElementById('v-'+id);
+    if(current!==id){
+      document.querySelectorAll('.view').forEach(function(x){x.classList.remove('on')});
+      void v.offsetWidth; v.classList.add('on');
+      if(current!==null && !reduce){ wipe.classList.remove('go'); void wipe.offsetWidth; wipe.classList.add('go'); }
+      var navId=parent[id]||id;
+      document.querySelectorAll('[data-nav]').forEach(function(a){a.classList.toggle('active',a.dataset.nav===navId)});
+      window.scrollTo(0,0);
+      countUp(v);
+      current=id;
+    }
+    if(scrollTo){ var t=document.getElementById(scrollTo); if(t) t.scrollIntoView({behavior:reduce?'auto':'smooth'}); }
+  }
+
+  function route(){ show((location.hash||'#home').slice(1)); }
+  window.addEventListener('hashchange',route);
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('[data-scroll]'); if(!a) return;
+    e.preventDefault(); show('home',a.dataset.scroll);
+  });
+  // whole activity card opens its page, except clicks on links and photos
+  document.addEventListener('click',function(e){
+    var card=e.target.closest('[data-go]');
+    if(!card || e.target.closest('a,.thumb.photo')) return;
+    location.hash=card.dataset.go;
+  });
+  route();
+
+  // photos: hover shows the whole image, click opens the lightbox
+  var peek=document.getElementById('peek'), peekImg=peek.querySelector('img'), peekTimer=null;
+  var lb=document.getElementById('lb'), lbImg=lb.querySelector('img'), lbCap=lb.querySelector('figcaption');
+  var group=[], idx=0, lastFocus=null;
+  var canHover=window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  function hidePeek(){ clearTimeout(peekTimer); peek.classList.remove('on'); }
+  function placePeek(th){
+    var r=th.getBoundingClientRect(), w=peek.offsetWidth, h=peek.offsetHeight, vw=innerWidth, vh=innerHeight, gap=14;
+    var x=r.right+gap+w<=vw ? r.right+gap : r.left-gap-w;
+    if(x<8) x=Math.max(8,Math.min(vw-w-8,r.left+r.width/2-w/2));
+    var y=Math.max(8,Math.min(vh-h-8,r.top+r.height/2-h/2));
+    peek.style.left=x+'px'; peek.style.top=y+'px';
+  }
+  if(canHover){
+    document.addEventListener('mouseover',function(e){
+      var th=e.target.closest('.thumb.photo'); if(!th || th.contains(e.relatedTarget)) return;
+      var img=th.querySelector('img');
+      clearTimeout(peekTimer);
+      peekTimer=setTimeout(function(){
+        peekImg.onload=function(){ placePeek(th); peek.classList.add('on'); };
+        peekImg.alt=img.alt;
+        if(peekImg.src===img.currentSrc && peekImg.complete) peekImg.onload(); else peekImg.src=img.currentSrc||img.src;
+      },120);
+    });
+    document.addEventListener('mouseout',function(e){
+      var th=e.target.closest('.thumb.photo'); if(th && !th.contains(e.relatedTarget)) hidePeek();
+    });
+    window.addEventListener('scroll',hidePeek,{passive:true});
+  }
+
+  function showLb(){
+    var img=group[idx];
+    lbImg.src=img.currentSrc||img.src; lbImg.alt=img.alt; lbCap.textContent=img.alt+(group.length>1?'  ·  '+(idx+1)+' / '+group.length:'');
+  }
+  function openLb(th){
+    var box=th.closest('.shots,.collage,.certs,.gallery')||th;
+    group=Array.prototype.map.call(box.querySelectorAll('.thumb.photo img'),function(i){return i});
+    idx=Math.max(0,group.indexOf(th.querySelector('img')));
+    lb.classList.toggle('single',group.length<2);
+    hidePeek(); showLb(); lastFocus=document.activeElement;
+    lb.classList.add('on'); lb.querySelector('.x').focus();
+  }
+  function closeLb(){ lb.classList.remove('on'); lbImg.removeAttribute('src'); if(lastFocus) lastFocus.focus(); }
+  function step(d){ idx=(idx+d+group.length)%group.length; showLb(); }
+
+  document.querySelectorAll('.thumb.photo').forEach(function(th){
+    th.tabIndex=0; th.setAttribute('role','button');
+    th.setAttribute('aria-label','Enlarge: '+th.querySelector('img').alt);
+  });
+  document.addEventListener('click',function(e){
+    var th=e.target.closest('.thumb.photo'); if(th) openLb(th);
+  });
+  lb.addEventListener('click',function(e){
+    if(e.target.closest('.prev')) step(-1);
+    else if(e.target.closest('.next')) step(1);
+    else if(e.target.closest('.x') || e.target===lb) closeLb();
+  });
+  document.addEventListener('keydown',function(e){
+    if(lb.classList.contains('on')){
+      if(e.key==='Escape') closeLb();
+      else if(e.key==='ArrowLeft' && group.length>1) step(-1);
+      else if(e.key==='ArrowRight' && group.length>1) step(1);
+      return;
+    }
+    var th=e.target.closest && e.target.closest('.thumb.photo');
+    if(th && (e.key==='Enter' || e.key===' ')){ e.preventDefault(); openLb(th); }
+  });
+})();
+</script>
+
+</body></html>
