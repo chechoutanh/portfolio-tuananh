@@ -85,7 +85,7 @@ export const home = {
         href: "https://drive.google.com/file/d/1Jrw6N94LoESs9NlzOXSeYbeLjIE6bXIv/view?usp=drive_link",
       },
       {
-        title: "Mathematics for Machine Learning",
+        title: "Mathematics for Machine Learning Specialization",
         note: "Imperial College London · Coursera 2026",
         href: "https://drive.google.com/file/d/1e9gPBccvZ7M2s8H6hp0cQOgNZ8bi7K0s/view?usp=drive_link",
       },
@@ -269,11 +269,11 @@ export const details: Detail[] = [
     hero: [
       I("usac-6.jpg", "USAC observing night at the Vietnam–Korea Care Center"),
       I("usac-7.jpg", "USAC astronomy exchange at SNA Marianapolis International School"),
-      I("usac-5.jpg", "Audience at a USAC talkshow"),
+      I("usac-5.jpg", "Audience at a USAC talk show"),
     ],
     bulletsTitle: "What I did",
     bullets: [
-      "Coordinated talkshows, star- and Moon-observing nights and school exchanges.",
+      "Coordinated talk shows, star- and Moon-observing nights and school exchanges.",
       "Helped run booths at the 2025 Space Science Festival (solar observing for hundreds of visitors) and 2025 Student–Enterprise Day alongside 33 companies.",
       "Supported the club's academic articles and shared telescopes and mounts with PAsC.",
       "Now lead small product projects, including AstroSphere's orbital computation team.",
@@ -283,7 +283,7 @@ export const details: Detail[] = [
       { value: "33", label: "Partner companies", note: "Student–Enterprise Day 2025" },
     ],
     gallery: {
-      caption: "talkshows · observing nights · school exchanges",
+      caption: "talk shows · observing nights · school exchanges",
       images: [
         I("usac-3.jpg", "Community Astronomy Week group photo"),
         I("usac-10.jpg", "The USAC club telescope set up for a public observing session"),
@@ -291,7 +291,7 @@ export const details: Detail[] = [
         I("usac-2.jpg", "CERIC workshop: how the five elements fit together"),
         I("usac-4.jpg", "Science day at Tran Dai Nghia High School for the Gifted"),
         I("usac-7.jpg", "USAC astronomy exchange at SNA Marianapolis International School"),
-        I("usac-5.jpg", "Audience at a USAC talkshow"),
+        I("usac-5.jpg", "Audience at a USAC talk show"),
         I("usac-6.jpg", "USAC observing night at the Vietnam–Korea Care Center"),
         I("usac-8.jpg", "Night observing session in the park"),
         I("usac-9.jpg", "Students raising hands during a USAC session"),
@@ -327,7 +327,7 @@ export const details: Detail[] = [
     bullets: [
       "Raised 15,000,000 VND (~US$570) by collecting e-waste for recycling.",
       "Taught 6+ sessions on kinetic and solar energy to 40+ children at Tam Duc Shelter.",
-      "Donated 7 solar-powered lights and supplies worth 11,000,000 VND (~US$420), plus 40 scholarships of 200,000 VND each, to Tam Duc Shelter and Suoi Tuong Floating Village.",
+      "Donated 7 solar lights and supplies (~US$420) plus 40 scholarships to Tam Duc Shelter and Suoi Tuong Village.",
     ],
     stats: [
       { value: "15M", label: "Raised", note: "VND from e-waste" },
@@ -341,7 +341,7 @@ export const details: Detail[] = [
         I("solar-5.jpg", "Selling plants at the fundraising station"),
         I("solar-6.jpg", "Loading donations for Suoi Tuong"),
         I("solar-3.jpg", "Delivering donated supplies"),
-        I("solar-7.jpg", "Charity class at Suoi Tuong Floating Village"),
+        I("solar-7.jpg", "Charity class at Suoi Tuong Village"),
         I("solar-8.jpg", "Energy lesson at Tam Duc Shelter"),
         I("solar-4.jpg", "Teaching children at Tam Duc Shelter"),
       ],
@@ -436,7 +436,7 @@ export const details: Detail[] = [
     ],
     stats: [
       { value: "40+", label: "Club members", note: "Volunteer tutors" },
-      { value: "120+", label: "Students tutored", note: "50+ directly, 70+ with Ngôi Nhà Trí Tuệ" },
+      { value: "50+", label: "Students taught", note: "Math, Physics & Chemistry" },
       { value: "85%", label: "Kept up with coursework", note: "Students in flood-affected areas" },
       { value: "1600+", label: "Page followers", note: "Facebook fanpage" },
     ],
@@ -459,7 +459,7 @@ export const details: Detail[] = [
         I("thanh-nien-article.jpg", "Team at Thanh Nien Newspaper"),
       ],
       stats: [
-        { value: "120+", label: "Students tutored" },
+        { value: "70+", label: "Students tutored in flood-affected areas" },
         { value: "40+", label: "Members" },
       ],
       bullets: [
@@ -527,7 +527,7 @@ export const details: Detail[] = [
   {
     slug: "telescope",
     group: "projects",
-    role: "Leader · PAsC · Sep 2025 – Present",
+    role: "Leader · PAsC · Dec 2025 – Present",
     title: "D70F700 Refractor Telescope",
     intro:
       "A homemade 70 mm, f/10 achromatic refractor, built from calculated optical lengths and a PVC tube, that has become PAsC's main instrument for safe public solar viewing.",
@@ -540,6 +540,7 @@ export const details: Detail[] = [
     bulletsTitle: "How I built it",
     bullets: [
       "Designed and built a 70 mm, f/10 achromatic refractor, calculating optical lengths to fabricate the PVC tube assembly and limit chromatic aberration.",
+      "Started from rough design drawings in Sep 2025; began the build in Dec 2025.",
       "Reached 20x magnification with available components and a mount borrowed from another club.",
       "Main instrument at PAsC events, letting 300+ attendees safely view the Sun through a solar filter.",
     ],
@@ -778,7 +779,7 @@ export const internship = {
   intro:
     "Working with industrial robot arms at HCMUT is where JointGuard AI started. These are the labs and teams that taught me how engineering works outside the classroom.",
   hero: [
-    I("hcmut-lab.jpg", "Working at the HCMUT Mechatronics Lab"),
+    I("hcmut-lab.jpg", "Working at the HCMUT Control & Automation Lab"),
     I("ros-robot.jpg", "Testing a ROS-based mobile robot on a line track"),
     I("physics-lab.jpg", "Physics lab session"),
   ],
@@ -793,7 +794,7 @@ export const internship = {
         "This work with industrial arms led to my independent project, JointGuard AI.",
       ],
       shots: [
-        I("hcmut-1.jpg", "Receiving the internship certificate at the Yaskawa Mechatro Lab"),
+        I("hcmut-1.jpg", "Receiving the internship certificate at the HCMUT Control & Automation Lab"),
         I("hcmut-2.jpg", "Programming an industrial robot with the teach pendant"),
         I("hcmut-3.jpg", "Testing obstacle avoidance on a mobile robot"),
         I("hcmut-4.jpg", "Working on the robot control GUI"),
