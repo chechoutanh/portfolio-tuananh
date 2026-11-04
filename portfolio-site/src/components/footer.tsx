@@ -41,7 +41,13 @@ export function Footer() {
           <p className="max-w-xl text-sm text-muted-foreground">{site.closing}</p>
           <div className="flex gap-5">
             <A href={site.github}>GitHub</A>
-            <A href={site.facebook}>Facebook</A>
+            <a
+              href={site.cv}
+              download
+              className="text-sm font-medium text-muted-foreground underline underline-offset-4 transition-colors hover:text-primary"
+            >
+              CV (PDF)
+            </a>
             <a
               href="#"
               className="text-sm font-medium text-muted-foreground underline underline-offset-4 transition-colors hover:text-primary"

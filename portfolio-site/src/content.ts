@@ -18,7 +18,8 @@ export const site = {
   id: "NMTA-2027",
   email: "teslagaming250@gmail.com",
   github: "https://github.com/chechoutanh",
-  facebook: "https://www.facebook.com/nmtangulyvcl/",
+  /** One-page CV, served from public/ */
+  cv: "/NGUYEN_MINH_TUAN_ANH_CV.pdf",
   location: "Ho Chi Minh City",
   classOf: "2027",
   majors: "Mechanical Eng. · Applied Math",
@@ -38,8 +39,8 @@ export const nav = [
 
 export const home = {
   tag: "Mechanical Engineering · Applied Math",
-  title: "I'm Tuan Anh",
-  lede: "A robot-arm tinkerer, a telescope builder, and a STEM tutor from Ho Chi Minh City.",
+  title: "Nguyen Minh Tuan Anh",
+  lede: "A high school student from Ho Chi Minh City (Class of 2027) who uses applied math to build machines: a robot-arm fault detector, a homemade telescope, an observing planner. I also teach STEM to students in rural Vietnam.",
   portrait: I("portrait.jpg", "Nguyen Minh Tuan Anh"),
   education: {
     title: "Education",
@@ -62,7 +63,7 @@ export const home = {
   },
   journey: {
     title: "My Academic Journey",
-    ref: "GPA / 10",
+    ref: "GPA · Vietnamese 10-point scale",
     items: [
       { value: "9.4", label: "Grade 9", note: "/10" },
       { value: "9.4", label: "Grade 10", note: "/10" },
@@ -124,8 +125,8 @@ export const home = {
       },
       {
         href: "#hobby",
-        value: "♞",
-        valueLabel: "Chess · soccer · table tennis",
+        value: "3",
+        valueLabel: "Volunteer projects",
         title: "Beyond the Lab",
         text: "Skills, volunteer work, and what I do when I'm not building things.",
       },
@@ -282,7 +283,7 @@ export const details: Detail[] = [
       { value: "33", label: "Partner companies", note: "Student–Enterprise Day 2025" },
     ],
     gallery: {
-      caption: "10 photos",
+      caption: "talkshows · observing nights · school exchanges",
       images: [
         I("usac-3.jpg", "Community Astronomy Week group photo"),
         I("usac-10.jpg", "The USAC club telescope set up for a public observing session"),

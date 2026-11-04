@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ArrowDown, ArrowUpRight } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Download, Mail } from "lucide-react";
 import { Heading, StatGrid } from "@/components/blocks";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -63,8 +63,13 @@ export function Home() {
                 </a>
               </Button>
               <Button asChild variant="secondary" size="lg">
-                <a href={site.facebook} target="_blank" rel="noopener noreferrer">
-                  Facebook <ArrowUpRight />
+                <a href={site.cv} download>
+                  Download CV <Download />
+                </a>
+              </Button>
+              <Button asChild variant="secondary" size="lg">
+                <a href={`mailto:${site.email}`}>
+                  Email <Mail />
                 </a>
               </Button>
             </div>
