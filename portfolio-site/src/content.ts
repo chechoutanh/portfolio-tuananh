@@ -40,7 +40,7 @@ export const nav = [
 export const home = {
   tag: "Mechanical Engineering · Applied Math",
   title: "Nguyen Minh Tuan Anh",
-  lede: "A high school student from Ho Chi Minh City (Class of 2027) who uses applied math to build machines: a robot-arm fault detector, a homemade telescope, an observing planner. I also teach STEM to students in rural Vietnam.",
+  lede: "A high school student from Ho Chi Minh City (Class of 2027) who uses applied math to model and build things: a simulated robot-arm fault detector, a homemade telescope, an observing planner. I also teach STEM to students in rural Vietnam.",
   portrait: I("portrait.jpg", "Nguyen Minh Tuan Anh"),
   education: {
     title: "Education",
@@ -112,7 +112,7 @@ export const home = {
       {
         href: "#projects",
         value: "32/32",
-        valueLabel: "Faulty runs caught by JointGuard AI",
+        valueLabel: "Simulated faults caught by JointGuard AI (in-range test set)",
         title: "Projects",
         text: "A robot-arm fault detector, a homemade refractor telescope, an anti-scam AI and two astronomy tools.",
       },
@@ -477,7 +477,7 @@ export const details: Detail[] = [
     role: "Founder · Jan 2026 – Present",
     title: "JointGuard AI",
     intro:
-      "Can control signals alone reveal rising joint friction in robot arms? Advised by Dr. Nguyen Vinh Hao (HCMUT) and Mr. Phung Van Hung (VNU-HCM High School for the Gifted).",
+      "An open-source simulation study: can control signals alone reveal rising joint friction in robot arms? Advised by Dr. Nguyen Vinh Hao (HCMUT) and Mr. Phung Van Hung (VNU-HCM High School for the Gifted).",
     links: [
       { label: "GitHub", href: "https://github.com/chechoutanh/JointGuard-AI" },
       { label: "Project page", href: "https://jointguardaii.vercel.app/" },
@@ -490,21 +490,21 @@ export const details: Detail[] = [
     bulletsTitle: "How it works",
     bullets: [
       "Built a physics-based robot-arm simulator and fault-injection framework using only torque and tracking error.",
-      "Random Forest detector under a leakage-free protocol: 0.21 false alarms/min; identified the faulty joint in 30/32 runs.",
-      "Reported its failure on heavier, faster held-out conditions (3.9 false alarms/min); released open source (MIT) with tests, a technical report and a demo.",
+      "Random Forest detector under a leakage-free protocol: caught 32/32 faulty test runs (0.21 false alarms/min) vs. 16/32 for an error-threshold baseline; identified the faulty joint in 30/32.",
+      "Reported its failure on held-out heavier, faster conditions (26/40 faults caught, 3.9 false alarms/min); released open source (MIT) with 31 automated tests, a technical report and a demo.",
       "Grew out of my internship with industrial robot arms at HCMUT.",
     ],
     stats: [
-      { value: "32/32", label: "Faulty runs caught", note: "vs. 16/32 for baseline" },
-      { value: "30/32", label: "Faulty joint found", note: "Runs" },
-      { value: "0.21", label: "False alarms", note: "Per minute" },
-      { value: "3.9", label: "Held-out failure", note: "False alarms/min, reported openly" },
+      { value: "32/32", label: "Faulty runs caught", note: "In-range test set; baseline 16/32" },
+      { value: "30/32", label: "Faulty joint found", note: "Test runs" },
+      { value: "0.21", label: "False alarms", note: "Per healthy minute, test set" },
+      { value: "26/40", label: "Held-out stress test", note: "3.9 false alarms/min, reported openly" },
     ],
     math: {
       label: "Mechanical Engineering · Applied Math",
-      text: "Modeled the arm from its equations of motion, so worn joints show up as extra friction torque; then treated detection as a statistics problem, trading missed faults against false alarms per minute.",
+      text: "Modeled the arm from its equations of motion, with a joint fault represented as extra friction torque; then treated detection as a statistics problem, trading missed faults against false alarms per minute.",
     },
-    tags: ["Mechanical Eng.", "Applied Math", "PyBullet", "Python", "scikit-learn", "Robot dynamics"],
+    tags: ["Mechanical Eng.", "Applied Math", "Python", "NumPy · SciPy", "scikit-learn", "Robot dynamics"],
     gallery: {
       caption: "project page · simulator",
       images: [
@@ -521,7 +521,7 @@ export const details: Detail[] = [
         I("jg-3.jpg", "Two-joint arm model built from the equations of motion"),
         I("jg-4.jpg", "How a joint fault shows up inside the physics"),
       ],
-      stats: [{ value: "32/32", label: "Faulty test runs caught", note: "vs. 16/32 for baseline" }],
+      stats: [{ value: "32/32", label: "Faulty test runs caught", note: "In simulation; baseline 16/32" }],
     },
   },
   {
