@@ -491,14 +491,15 @@ export const details: Detail[] = [
     bullets: [
       "Built a physics-based robot-arm simulator and fault-injection framework using only torque and tracking error.",
       "Random Forest detector under a leakage-free protocol: caught 32/32 faulty test runs (0.21 false alarms/min) vs. 16/32 for an error-threshold baseline; identified the faulty joint in 30/32.",
-      "Reported its failure on held-out heavier, faster conditions (26/40 faults caught, 3.9 false alarms/min); released open source (MIT) with 31 automated tests, a technical report and a demo.",
+      "Diagnosed its failure on held-out heavier, faster conditions (26/40 faults caught, 3.9 false alarms/min) and fixed it with physics-residual features from the equations of motion: on a fresh stress set, 40/40 faults caught at 0.08 false alarms/min.",
+      "Released open source (MIT) with 37 automated tests, a technical report, a desktop demo and a web demo.",
       "Grew out of my internship with industrial robot arms at HCMUT.",
     ],
     stats: [
       { value: "32/32", label: "Faulty runs caught", note: "In-range test set; baseline 16/32" },
       { value: "30/32", label: "Faulty joint found", note: "Test runs" },
       { value: "0.21", label: "False alarms", note: "Per healthy minute, test set" },
-      { value: "26/40", label: "Held-out stress test", note: "3.9 false alarms/min, reported openly" },
+      { value: "0.08", label: "After the physics fix", note: "False alarms/min on a fresh stress set (was 4.7)" },
     ],
     math: {
       label: "Mechanical Engineering · Applied Math",
