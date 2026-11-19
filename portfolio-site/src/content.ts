@@ -474,10 +474,10 @@ export const details: Detail[] = [
   {
     slug: "jointguard",
     group: "projects",
-    role: "Founder · Jan 2026 – Present",
+    role: "Independent Researcher · Jan 2026 – Present",
     title: "JointGuard AI",
     intro:
-      "An open-source simulation study: can control signals alone reveal rising joint friction in robot arms? Advised by Dr. Nguyen Vinh Hao (HCMUT) and Mr. Phung Van Hung (VNU-HCM High School for the Gifted).",
+      "An open-source simulation study: can control signals alone reveal rising joint friction in robot arms? Advised by Dr. Nguyen Vinh Hao (HCMUT) and M.Sc. Phung Van Hung (VNU-HCM High School for the Gifted).",
     links: [
       { label: "GitHub", href: "https://github.com/chechoutanh/JointGuard-AI" },
       { label: "Project page", href: "https://jointguardaii.vercel.app/" },
